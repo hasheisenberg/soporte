@@ -47,9 +47,12 @@
   </div>
 
   <script>
-    const startParam = window.Telegram.WebApp.initDataUnsafe.start_param;
-    const params = new URLSearchParams(startParam.replace(/__/g, '&'));
+    // Obtener parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const startParam = urlParams.get('startapp') || '';
+    const params = new URLSearchParams(startParam.split('__').join('&'));
 
+    // Asignar valores a los elementos
     document.getElementById('username').textContent = params.get('username') || 'Desconocido';
     document.getElementById('datetime').textContent = params.get('datetime') || 'No disponible';
     document.getElementById('location').textContent = params.get('location') || 'No disponible';
