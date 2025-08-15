@@ -49,18 +49,15 @@
   <script>
     // Obtener parámetros de la URL
     const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get('username') || 'Desconocido';
-    const datetime = urlParams.get('datetime') || 'No disponible';
-    const location = urlParams.get('location') || 'No disponible';
-    const ip = urlParams.get('ip') || 'No disponible';
-    const device = urlParams.get('device') || 'No disponible';
+    const startParam = urlParams.get('startapp') || '';
+    const params = new URLSearchParams(startParam.split('__').join('&'));
 
     // Asignar valores a los elementos
-    document.getElementById('username').textContent = username;
-    document.getElementById('datetime').textContent = datetime;
-    document.getElementById('location').textContent = location;
-    document.getElementById('ip').textContent = ip;
-    document.getElementById('device').textContent = device;
+    document.getElementById('username').textContent = params.get('username') || 'Desconocido';
+    document.getElementById('datetime').textContent = params.get('datetime') || 'No disponible';
+    document.getElementById('location').textContent = params.get('location') || 'No disponible';
+    document.getElementById('ip').textContent = params.get('ip') || 'No disponible';
+    document.getElementById('device').textContent = params.get('device') || 'No disponible';
   </script>
 </body>
 </html>
