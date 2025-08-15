@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles de la Cuenta</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    .container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      font-size: 16px;
+      color: #555;
+    }
+    .details {
+      margin-top: 20px;
+      background-color: #e9ecef;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Detalles de la Cuenta</h1>
+    <p><strong>Usuario:</strong> <span id="username"></span></p>
+    <p><strong>Fecha y Hora:</strong> <span id="datetime"></span></p>
+    <div class="details">
+      <p><strong>Ubicación:</strong> <span id="location"></span></p>
+      <p><strong>IP:</strong> <span id="ip"></span></p>
+      <p><strong>Dispositivo:</strong> <span id="device"></span></p>
+    </div>
+  </div>
+
+  <script>
+    // Obtener parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username') || 'Desconocido';
+    const datetime = urlParams.get('datetime') || 'No disponible';
+    const location = urlParams.get('location') || 'No disponible';
+    const ip = urlParams.get('ip') || 'No disponible';
+    const device = urlParams.get('device') || 'No disponible';
+
+    // Asignar valores a los elementos
+    document.getElementById('username').textContent = username;
+    document.getElementById('datetime').textContent = datetime;
+    document.getElementById('location').textContent = location;
+    document.getElementById('ip').textContent = ip;
+    document.getElementById('device').textContent = device;
+  </script>
+</body>
+</html>
