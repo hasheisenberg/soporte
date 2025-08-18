@@ -3,73 +3,301 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalles de la Cuenta</title>
+  <title>Detalles de Sesión</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
-      padding: 20px;
-      background-color: #f4f4f4;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
     }
-    .container {
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    body {
+      background: linear-gradient(135deg, #f8f9fc 0%, #eef2f6 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 20px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    h1 {
       color: #333;
     }
-    p {
-      font-size: 16px;
-      color: #555;
+
+    .container {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 500px;
+      overflow: hidden;
+      position: relative;
+      transform: translateY(0);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .details {
+
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+    }
+
+    .header {
+      background: #4361ee;
+      color: white;
+      padding: 25px 30px;
+      text-align: center;
+      position: relative;
+    }
+
+
+    .header i {
+      font-size: 32px;
+      margin-bottom: 15px;
+      display: block;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .header h2 {
+      font-weight: 600;
+      font-size: 1.5rem;
+      letter-spacing: -0.3px;
+    }
+
+    .content {
+      padding: 15px 30px 30px;
+    }
+
+    .info-section {
+      margin-bottom: 30px;
+    }
+
+    .info-item {
+      display: flex;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      align-items: flex-start;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(67, 97, 238, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+      color: #4361ee;
+    }
+
+    .info-text {
+      flex: 1;
+    }
+
+    .info-text strong {
+      display: block;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #777;
+      margin-bottom: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .info-text span {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #333;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .section-title {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 25px;
+      color: #3a0ca3;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 24px;
+      width: 5px;
+      background: linear-gradient(to bottom, #4361ee, #3a0ca3);
+      border-radius: 10px;
+    }
+
+    .details-section {
+      background: #fafbff;
+      border-radius: 18px;
+      padding: 25px;
+      border: 1px solid rgba(67, 97, 238, 0.1);
       margin-top: 20px;
-      background-color: #e9ecef;
-      padding: 10px;
-      border-radius: 8px;
     }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #888;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Detalles Inicio de Sesión</h2>
-    <p><strong>Usuario:</strong> <span id="username"></span></p>
-    <p><strong>Nombre:</strong> <span id="fullname"></span></p>
-
-
-
-
-
-    <p><strong>Fecha y Hora:</strong> <span id="datetime"></span> (Hora de New York)</p>
-
-    <div class="details">Origen
-          <p><strong>Pais:</strong> <span id="pais"></span></p>
-    <p><strong>Region:</strong> <span id="region"></span></p>
-    <p><strong>Ciudad:</strong> <span id="city"></span></p>
-      <p><strong>Navegador:</strong> <span id="navegador"></span></p>
-      <p><strong>Dispositivo Movil:</strong> <span id="isMobile"></span></p>
-      <p><strong>plataforma:</strong> <span id="plataforma"></span></p>
-      <p><strong>IP:</strong> <span id="ip"></span></p>
-      <p><strong>Dispositivo:</strong> <span id="device"></span></p>
+    <div class="header">
+      <h2>Detalles Inicio de Sesión</h2>
     </div>
-
+    
+    <div class="content">
+      <div class="info-section">
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="info-text">
+            <strong>USUARIO</strong>
+            <span id="username"></span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-id-card"></i>
+          </div>
+          <div class="info-text">
+            <strong>NOMBRE</strong>
+            <span id="fullname"></span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="info-text">
+            <strong>FECHA Y HORA</strong>
+            <span id="datetime"></span>
+          </div>
+        </div>
+      </div>
+      
+      <h3 class="section-title">Origen</h3>
+      
+      <div class="details-section">
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-globe-americas"></i>
+          </div>
+          <div class="info-text">
+            <strong>PAÍS</strong>
+            <span id="pais"></span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="info-text">
+            <strong>REGIÓN</strong>
+            <span id="region"></span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-city"></i>
+          </div>
+          <div class="info-text">
+            <strong>CIUDAD</strong>
+            <span id="city"></span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-compass"></i>
+          </div>
+          <div class="info-text">
+            <strong>NAVEGADOR</strong>
+            <span id="navegador"></span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <div class="info-text">
+            <strong>DISPOSITIVO MÓVIL</strong>
+            <span id="isMobile"></span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-laptop"></i>
+          </div>
+          <div class="info-text">
+            <strong>PLATAFORMA</strong>
+            <span id="plataforma"></span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <div class="info-text">
+            <strong>IP</strong>
+            <span id="ip"></span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <div class="info-text">
+            <strong>DISPOSITIVO</strong>
+            <span id="device"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>Datos de sesión protegidos • Sistema de seguridad</p>
+    </div>
   </div>
 
   <script>
-    // Obtener parámetros de la URL
+
+    // Obtener parámetros de la URL (versión real)
     const urlParams = new URLSearchParams(window.location.search);
     const startParam = urlParams.get('startapp') || '';
     const params = new URLSearchParams(startParam.split('__').join('&'));
-
+    
     const fields = ['username', 'fullname', 'datetime', 'pais', 'region', 'city', 'ip', 'navegador', 'isMobile', 'plataforma', 'device'];
-
+    
     fields.forEach(field => {
-      document.getElementById(field).textContent = params.get(field) || 'No disponible';
+      const element = document.getElementById(field);
+      const value = params.get(field);
+      element.textContent = value;
     });
   </script>
 </body>
-</html> 
+</html>
