@@ -20,14 +20,40 @@
             gap: 15px;
         }
 
+h2::after {
+            border-radius: 0px 10px 0px 0px;
+            box-shadow: 10px -10px 0px 5px #4361ee;
+            left: -20px;
+        }
+        h2::before, 
+        h2::after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 0px;
+        }
+        h2::before {
+
+
+            right: -20px;
+            border-radius: 10px 0px 0px 0px;
+            box-shadow: -10px -10px 0px 5px #4361ee;  
+        }
+
         h2 {
-            margin: 0px;
-            padding: 20px 20px 20px;
+            position: relative;
+            text-align: center;
+            width: fit-content;
+            margin: auto;
+            border-radius: 0px 0px 10px 10px;
+            padding: 12px;
             background-color: #4361ee;
             color: white;
             font-weight: normal;
             letter-spacing: 0.5px;
-            font-size: 20px;
+            font-size: 17px;
         }
 
         .details {
