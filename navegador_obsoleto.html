@@ -6,16 +6,6 @@
   <title>Navegador obsoleto</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    :root {
-      --primary-color: #1a73e8;
-      --primary-dark-color: #165ab4;
-      --error-color: #d93025;
-      --success-color: #0f9d58;
-      --warning-color: #fbbc04;
-      --text-color: #202124;
-      --light-gray: #f2f2f2;
-      --border-color: #dadce0;
-    }
 
     * {
       box-sizing: border-box;
@@ -26,15 +16,16 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      display: -webkit-flex;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      color: var(--text-color);
+      color: #202124;
       text-align: center;
       padding: 1rem;
       line-height: 1.5;
-      background-color: var(--light-gray);
+      background-color: #f2f2f2;
     }
 
     .container {
@@ -44,7 +35,7 @@
 
     h1 {
       font-size: 1.75rem;
-      color: var(--error-color);
+      color: #d93025;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -56,23 +47,29 @@
       color: #5f6368;
     }
 
-    .browsers-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 15px;
-      margin-top: 1.5rem;
-    }
+.browsers-container {
+  display: -webkit-flex;
+  display: flex; 
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: -8px;
+  margin-top: 5px;
+}
 
     .browser-card {
+      margin: 8px;
+      -webkit-flex: 1 1 300px;
+      flex: 1 1 300px;
+      max-width: calc(50% - 15px);
       background: white;
-      height: fit-content;
       border-radius: 12px;
       padding: 1rem;
-      border: 1px solid var(--border-color);
+      border: 1px solid #dadce0;
       text-align: left;
     }
 
     .browser-header {
+      display: -webkit-flex;
       display: flex;
       align-items: center;
     }
@@ -104,46 +101,6 @@
 
     }
 
-    details {
-      margin-top: 1rem;
-    }
-
-    summary {
-      cursor: pointer;
-      padding: 0.35rem 0.60rem;
-      background-color: #e8f0fe;
-      color: var(--primary-color);
-      border-radius: 5px;
-      font-size: 0.9rem;
-      font-weight: bold;
-      list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    summary::after {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-right: 2px solid var(--primary-color);
-      border-bottom: 2px solid var(--primary-color);
-      transform: rotate(45deg);
-      font-size: 0.8rem;
-      transition: transform 0.2s;
-      margin-bottom: 5px;
-    }
-
-    details[open] summary::after {
-      margin-bottom: 0px;
-      margin-top: 5px;
-      transform: rotate(225deg);
-    }
-
     .options-container {
       margin-top: 1rem;
     }
@@ -161,12 +118,13 @@
     }
 
     .option {
+      display: -webkit-flex;
       display: flex;
       align-items: center;
       padding: 0.5rem 0.75rem;
       border-radius: 8px;
       margin-top: 0.75rem;
-      background-color: var(--light-gray);
+      background-color: #f2f2f2;
       border: 1px solid transparent;
       transition: all 0.2s;
       cursor: pointer;
@@ -176,7 +134,7 @@
 
     .option:hover {
       background-color: #e8f0fe;
-      border-color: var(--primary-color);
+      border-color: #1a73e8;
     }
 
     .iphone6s {
@@ -227,7 +185,7 @@
       padding: 5px 10px;
       border-radius: 15px;
       border: none;
-      background-color: var(--primary-color);
+      background-color: #1a73e8;
       color: white;
       font-size: 0.8rem;
       letter-spacing: 0.015rem;
@@ -235,12 +193,12 @@
     }
 
     .btn-obtener:hover {
-      background-color: var(--primary-dark-color);
+      background-color: #165ab4;
     }
 
 
 
-    @media (max-width: 600px) {
+    @media (max-width: 660px) {
       h1 {
         font-size: 1.5rem;
       }
@@ -249,13 +207,11 @@
         font-size: 1rem;
       }
 
-      .browsers-container {
-        grid-template-columns: 1fr;
-      }
 
-      .browser-card {
-        padding: 1rem;
-      }
+.browser-card {
+    flex: 1 1 100%; 
+    max-width: 100%;
+  }
     }
   </style>
 </head>
@@ -535,7 +491,7 @@
 
 <script>
 
-  const redirigir = document.getElementById("redirigir");
+  var redirigir = document.getElementById("redirigir");
 
   function getCookie(nombre) {
       var valor = "; " + document.cookie;
@@ -550,17 +506,17 @@
   if (urlGuardada) { redirigir.href = urlGuardada; } 
   else { redirigir.style.display = "none"; }
 
-  const chromeBox = document.getElementById("chrome-box");
-  const obtenerChrome = document.getElementById("obtener-chrome");
+  var chromeBox = document.getElementById("chrome-box");
+  var obtenerChrome = document.getElementById("obtener-chrome");
 
-  const edgeBox = document.getElementById("edge-box");
-  const obtenerEdge = document.getElementById("obtener-edge");
+  var edgeBox = document.getElementById("edge-box");
+  var obtenerEdge = document.getElementById("obtener-edge");
 
-  const safariBox = document.getElementById("safari-box");
-  const obtenerSafari = document.getElementById("obtener-safari");
+  var safariBox = document.getElementById("safari-box");
+  var obtenerSafari = document.getElementById("obtener-safari");
 
-  const otrosBox = document.getElementById("otros-box");
-  const obtenerOtros = document.getElementById("obtener-otros");
+  var otrosBox = document.getElementById("otros-box");
+  var obtenerOtros = document.getElementById("obtener-otros");
 
   function expandir(box) {
     if (box === "chrome") {
