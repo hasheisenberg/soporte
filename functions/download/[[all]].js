@@ -1,6 +1,6 @@
 export async function onRequestGet(context) {
   const url = new URL(context.request.url);
-  const key = url.pathname.split('/').pop(); // Obtiene la última parte de la ruta
+  const key = url.pathname.split('/').pop();
 
   const obj = await context.env.BUCKET.get(key);
 
@@ -9,7 +9,8 @@ export async function onRequestGet(context) {
   }
 
   const headers = new Headers();
-  obj.writeHttpMetadata(headers);
+  headers.set("Content-Type", obj.httpMetadata.contentType || "application/vnd.android.package-archive");
+  headers.set("Content-Disposition", `attachment; filename="${key}"`);
   headers.set("etag", obj.httpEtag);
 
   return new Response(obj.body, { headers });
