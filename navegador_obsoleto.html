@@ -503,8 +503,7 @@
 
   try { urlGuardada = decodeURIComponent(getCookie("navegadorobsoleto") || ""); } catch(e) { urlGuardada = ""; }
 
-  if (urlGuardada) { redirigir.href = urlGuardada; } 
-  else { redirigir.style.display = "none"; }
+  if (urlGuardada) { redirigir.href = urlGuardada + "?forzado"; } else { redirigir.style.display = "none"; }
 
   var chromeBox = document.getElementById("chrome-box");
   var obtenerChrome = document.getElementById("obtener-chrome");
