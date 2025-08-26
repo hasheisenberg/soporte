@@ -18,6 +18,7 @@
       font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       display: -webkit-flex;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
@@ -28,9 +29,57 @@
       background-color: #f2f2f2;
     }
 
-    .container {
+    #container {
       max-width: 660px;
       width: 100%;
+    }
+    #install {
+      display: none;
+      background-color: #eee;
+      text-align: start;
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 1px solid #ddd;
+      min-width: 250px;
+    }
+
+    .botones-install {
+      display: flex;
+      margin-top: 1rem;
+    }
+
+    #install div {
+      margin-bottom: 0.5rem;
+    }
+    #install svg {
+      min-height: 1.2rem;
+      min-width: 1.2rem;
+      height: 1.2rem;
+      width: 1.2rem;
+    }
+    #install button {
+      width: 100%;
+      cursor: pointer;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.025rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      background-color: #4244bd;
+      border-radius: 0.5rem;
+      color: white;
+    }
+
+    #install svg {
+      fill: white;
+    }
+
+    label {
+      font-size: 0.85rem;
+      color: #777;
     }
 
     h1 {
@@ -47,14 +96,14 @@
       color: #5f6368;
     }
 
-.browsers-container {
-  display: -webkit-flex;
-  display: flex; 
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: -8px;
-  margin-top: 5px;
-}
+    .browsers-container {
+      display: -webkit-flex;
+      display: flex; 
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: -8px;
+      margin-top: 5px;
+    }
 
     .browser-card {
       margin: 8px;
@@ -117,6 +166,8 @@
       color: #5f6368;
     }
 
+
+
     .option {
       display: -webkit-flex;
       display: flex;
@@ -161,7 +212,6 @@
     .download-icon {
       width: 16px;
       height: 16px;
-      opacity: 0.7;
     }
 
 
@@ -175,7 +225,15 @@
       text-align: left;
     }
 
-
+    .option1 {
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    .option2 {
+      color: #777;
+      font-weight: normal;
+      font-size: 0.8rem;
+    }
     .detalles {
       display: none;
     }
@@ -196,6 +254,9 @@
       background-color: #165ab4;
     }
 
+    .volver {
+      background-color: red;
+    }
 
 
     @media (max-width: 660px) {
@@ -217,7 +278,9 @@
 </head>
 
 <body>
-  <div class="container">
+
+
+  <div id="container">
     <h1>Navegador no compatible</h1>
     <br>
     <p>Versiones mínimas requeridas de los princiaples navegadores web para poder usar la plataforma:</p>
@@ -244,13 +307,14 @@
 
         <div class="detalles" id="chrome-box">
           <div class="options-container">
-            <div class="option-title">Sistema operativo mínimo</div>
-            <button class="option">
+            <div class="option-title">Plataformas</div>
+            <button class="option" onclick="descargar('Google', '106.582', 'Dispositivo Android', 'Android 6.0', '43.2MB')">
               <svg class="option-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="m23.35 12.653 2.496-4.323a.519.519 0 0 0-.897-.522l-.001.002-2.527 4.377c-1.887-.867-4.094-1.373-6.419-1.373s-4.532.506-6.517 1.413l.098-.04-2.527-4.378a.519.519 0 1 0-.898.521l-.001-.002 2.496 4.323c-4.286 2.367-7.236 6.697-7.643 11.744l-.003.052h29.991a14.76 14.76 0 0 0-7.57-11.758l-.076-.038zM9.098 20.176a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249m13.804 0a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249" />
               </svg>
-              <span class="option-text">Android 6.0</span>
+              <span class="option-text">Dispositivo Android
+              </span>
               <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
@@ -262,7 +326,7 @@
                 <path
                   d="M-1.658 3.982a.8.8 0 0 0-.392-.09 1.4 1.4 0 0 0-.424.106l-.236.821c.179-.072.324-.101.445-.101.2 0 .339.077.471.165l.245-.837zm.251.168-.236.82s.276.17.484.17c.131 0 .288-.032.485-.113l.228-.796a1.3 1.3 0 0 1-.447.085.8.8 0 0 1-.514-.166m-.552-.458c.192.002.328.079.455.163l.241-.825v-.001s-.17-.102-.288-.132a1 1 0 0 0-.191-.022h-.003c-.12.002-.264.031-.441.104l-.233.820c.182-.074.329-.107.453-.107zm1.351-.387a.8.8 0 0 1-.506-.169l-.239.828.002.002a.9.9 0 0 0 .509.159c.136 0 .288-.031.454-.109v-.001l.002-.001.236-.813a1.1 1.1 0 0 1-.458.104" />
               </svg>
-              <span class="option-text">Windows 7</span>
+              <div class="option-text">Windows PC</div>
               <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
@@ -277,7 +341,7 @@
                   d="M23.285 24.5a10.7 10.7 0 0 0 4.484-1.3l.587.75a12.8 12.8 0 0 1-5.071 1.517 13.6 13.6 0 0 0 .441 2.8h7.337V12.739h-7.81a19.34 19.34 0 0 0-2.968 8.381h3.506a15.4 15.4 0 0 0-.506 3.375Zm-6.717-9.413h.995v2.299h-.995z" />
                 <path fill="#111" d="M24.851 15.087h.994v2.299h-.994z" />
               </svg>
-              <span class="option-text">macOS 10.13</span>
+              <span class="option-text">Mínimo macOS 10.13</span>
               <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
@@ -289,7 +353,7 @@
                 <path
                   d="M12.9 2.9A4.7 4.7 0 0 1 16.35 1a4.6 4.6 0 0 1-1.15 3.5c-1.5 1.85-3.25 1.55-3.25 1.55s-.35-1.45.95-3.15m-.8 4.4c.75 0 2.15-1 3.95-1a4.85 4.85 0 0 1 4.3 2.2 4.75 4.75 0 0 0-2.4 4.15 4.9 4.9 0 0 0 3 4.5s-2.1 5.8-4.9 5.8c-1.25 0-2.25-.85-3.6-.85S9.7 23 8.8 23C6.25 23 3 17.45 3 13s2.75-6.65 5.3-6.65c1.65 0 2.95.95 3.8.95" />
               </svg>
-              <span class="option-text">iOS 14 <span class="iphone6s">iPhone 6s</span></span>
+              <span class="option-text">Mínimo iOS 14 <span class="iphone6s">iPhone 6s</span></span>
               <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
@@ -487,9 +551,54 @@
     </div>
 
   </div>
+
+  <div id="install">
+    
+    <label for="">Navegador</label>
+    <div id="install-browser">Google Chrome</div>
+    <label for="">Versión</label>
+    <div id="version-browser">106.584</div>
+    <label for="">Plataforma</label>
+    <div id="install-device">Dispositivo Android</div>
+    <label for="">OS mínimo requerido</label>
+    <div id="install-OS">Android 6.0</div>
+    <label for="">Tamaño de Archvio</label>
+    <div id="install-size">43.2MB</div>
+    <div class="botones-install" style="margin-bottom: 0rem;">
+      <button onclick="hideDescargar()" style="margin-right: 1rem; width: 80px; background-color: #777;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><path d="M48.6 23H15.4c-.9 0-1.3-1.1-.7-1.7l9.6-9.6c.6-.6.6-1.5 0-2.1l-2.2-2.2c-.6-.6-1.5-.6-2.1 0L2.5 25c-.6.6-.6 1.5 0 2.1L20 44.6c.6.6 1.5.6 2.1 0l2.1-2.1c.6-.6.6-1.5 0-2.1l-9.6-9.6c-.6-.7-.2-1.8.7-1.8h33.2c.8 0 1.5-.6 1.5-1.4v-3c0-.8-.6-1.6-1.4-1.6"/></svg></button>
+      <button>Descargar</div>
+  </div>
+
+
 </body>
 
 <script>
+
+  var install = document.getElementById("install");
+  var container = document.getElementById("container");
+
+  var installBrowser = document.getElementById("install-browser");
+  var versionBrowser = document.getElementById("version-browser");
+  var installDevice = document.getElementById("install-device");
+  var installOS = document.getElementById("install-OS");
+  var installSize = document.getElementById("install-size");
+
+  function descargar(navegador, version, device, os, size) {
+    installBrowser.textContent = navegador ;
+    versionBrowser.textContent = version ;
+    installDevice.textContent = device;
+    installOS.textContent = os;
+    installSize.textContent = size;
+
+    container.style.display = "none";
+    install.style.display = "block";
+  }
+
+  function hideDescargar() {
+    container.style.display = "block";
+    install.style.display = "none";
+  }
+
 
   var redirigir = document.getElementById("redirigir");
 
