@@ -2,10 +2,10 @@ export async function onRequestGet(context) {
   const url = new URL(context.request.url);
   const key = url.pathname.slice(1); // Elimina el primer "/"
   const obj = await context.env.BUCKET.get(key);
-  console.log(url, key, obj);
+  
 
   if (!obj) {
-    return new Response("Archivo no encontrado", { status: 404 });
+    return new Response("Archivo no encontrado" + url + key + obj , { status: 404 });
   }
 
   const headers = new Headers();
