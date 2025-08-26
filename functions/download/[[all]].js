@@ -1,15 +1,15 @@
 export async function onRequestGet(context) {
-  const name = new URL(context.request.url).pathname.split("/").pop();
-  const obj = await context.env.BUCKET.get(name);
+  const url = new URL(context.request.url);
+  const key = url.pathname.slice(1); // Elimina el primer "/"
+  const obj = await context.env.BUCKET.get(key);
 
   if (!obj) {
-    return new Response("No encontrado", { status: 404 });
+    return new Response("Archivo no encontrado", { status: 404 });
   }
 
-  return new Response(obj.body, {
-    headers: {
-      "Content-Type": obj.httpMetadata.contentType || "application/octet-stream",
-      "Content-Disposition": `attachment; filename="${name}"`,
-    },
-  });
+  const headers = new Headers();
+  obj.writeHttpMetadata(headers);
+  headers.set("etag", obj.httpEtag);
+
+  return new Response(obj.body, { headers });
 }
