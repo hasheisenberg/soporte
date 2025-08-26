@@ -9,7 +9,7 @@ export async function onRequestGet(context) {
   }
 
   const headers = new Headers();
-  headers.set("Content-Type", obj.httpMetadata.contentType || "application/vnd.android.package-archive");
+  headers.set("Content-Type", "application/vnd.android.package-archive");
   headers.set("Content-Disposition", `attachment; filename="${key}"`);
   headers.set("etag", obj.httpEtag);
 
