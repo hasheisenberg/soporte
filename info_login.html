@@ -2,550 +2,208 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Navegador obsoleto</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Cuenta</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+            margin: 0;
+            background-color: white;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        .container {
+            background-color: #fff;
+            padding: 20px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      display: -webkit-flex;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      color: #202124;
-      text-align: center;
-      padding: 1rem;
-      line-height: 1.5;
-      background-color: #f2f2f2;
-    }
+        h2 {
+            margin: 0;
+            text-align: center;
+            padding: 10px;
+            background-color: #4361ee;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
 
-    .container {
-      max-width: 660px;
-      width: 100%;
-    }
+        .details {
+            margin-top: 20px;
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 8px;
+        }
 
-    h1 {
-      font-size: 1.75rem;
-      color: #d93025;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-    }
-
-    p {
-      font-size: 0.9rem;
-      color: #5f6368;
-    }
-
-.browsers-container {
-  display: -webkit-flex;
-  display: flex; 
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: -8px;
-  margin-top: 5px;
-}
-
-    .browser-card {
-      margin: 8px;
-      -webkit-flex: 1 1 300px;
-      flex: 1 1 300px;
-      max-width: calc(50% - 15px);
-      background: white;
-      border-radius: 12px;
-      padding: 1rem;
-      border: 1px solid #dadce0;
-      text-align: left;
-    }
-
-    .browser-header {
-      display: -webkit-flex;
-      display: flex;
-      align-items: center;
-    }
-
-    .browser-icon {
-      margin-right: 0.75rem;
-      width: 35px;
-      height: 35px;
-      flex-shrink: 0;
-    }
-
-    .browser-icon2 {
-      margin-right: -1.1rem;
-      width: 35px;
-      height: 35px;
-      flex-shrink: 0;
-    }
-
-
-    .browser-name {
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    .browser-version {
-      color: #5f6368;
-      font-size: 0.85rem;
-      margin-top: -0.10rem;
-
-    }
-
-    .options-container {
-      margin-top: 1rem;
-    }
-
-    .options-container p {
-      margin: 0px;
-      font-size: 15px;
-    }
-
-    .option-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: #5f6368;
-    }
-
-    .option {
-      display: -webkit-flex;
-      display: flex;
-      align-items: center;
-      padding: 0.5rem 0.75rem;
-      border-radius: 8px;
-      margin-top: 0.75rem;
-      background-color: #f2f2f2;
-      border: 1px solid transparent;
-      transition: all 0.2s;
-      cursor: pointer;
-      width: 100%;
-      text-align: left;
-    }
-
-    .option:hover {
-      background-color: #e8f0fe;
-      border-color: #1a73e8;
-    }
-
-    .iphone6s {
-      background-color: #ddd;
-      padding: 2px 5px;
-      border-radius: 5px;
-      color: #555;
-    }
-
-    .option-icon {
-      min-width: 1.5rem;
-      min-height: 1.5rem;
-      width: 1.5rem;
-      height: 1.5rem;
-      margin-right: 0.75rem;
-      flex-shrink: 0;
-    }
-
-    .option-text {
-      font-size: 0.9rem;
-      flex-grow: 1;
-    }
-
-    .download-icon {
-      width: 16px;
-      height: 16px;
-      opacity: 0.7;
-    }
-
-
-    .unsupported-note {
-      width: fit-content;
-      margin-top: 1rem;
-      padding: 0.5rem 0.65rem;
-      background-color: #ffebe0;
-      border: 1px solid #ffd0b9;
-      border-radius: 10px;
-      text-align: left;
-    }
-
-    .option1 {
-      font-weight: bold;
-      font-size: 0.9rem;
-    }
-    .option2 {
-      color: #777;
-      font-weight: normal;
-      font-size: 0.8rem;
-    }
-    .detalles {
-      display: none;
-    }
-
-    .btn-obtener {
-      margin-left: auto;
-      padding: 5px 10px;
-      border-radius: 15px;
-      border: none;
-      background-color: #1a73e8;
-      color: white;
-      font-size: 0.8rem;
-      letter-spacing: 0.015rem;
-      cursor: pointer;
-    }
-
-    .btn-obtener:hover {
-      background-color: #165ab4;
-    }
-
-
-
-    @media (max-width: 660px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-
-
-.browser-card {
-    flex: 1 1 100%; 
-    max-width: 100%;
-  }
-    }
-  </style>
+        .container svg {
+            height: 15px;
+            width: 15px;
+            min-width: 15px;
+            border-radius: 8px;
+            fill: #4361ee;
+            background-color: #4361ee1a;
+            padding: 10px;
+        }
+        .info-line {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin: 0px;
+            padding: 0px;
+                align-items: center;
+        }
+        .info-line b {
+            padding: 0px;
+            margin: 0px;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            color: #777;
+        }
+        .info-line p {
+            padding: 0px;
+            margin: 0px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        .info-line-box {
+            gap: 2px;
+            display: flex;
+            flex-direction: column;
+        }
+        #datetime::after {
+            content: " Hora de New York";
+            color: #999;
+            font-weight: normal;
+        }
+        .rayita {
+            width: 100%;
+            height: 1px;
+            margin: 10px 0px 5px;
+            background-color: #eee;
+        }
+        h3 {
+            margin: 0px;
+            color: #4361ee;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Navegador no compatible</h1>
-    <br>
-    <p>Versiones mínimas requeridas de los princiaples navegadores web para poder usar la plataforma:</p>
 
-    <div class="browsers-container">
-      <!-- Google Chrome -->
-      <div class="browser-card">
-        <div class="browser-header">
-          <svg class="browser-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#e53b2c"
-              d="M2.503 1.907A7.47 7.47 0 0 1 7.5 0a7.5 7.5 0 0 1 6.635 4H7.5a3.5 3.5 0 0 0-3.23 2.149z" />
-            <path fill="#209742"
-              d="M1.745 2.69a7.503 7.503 0 0 0 3.41 11.937l2.812-3.658Q7.737 11 7.5 11a3.5 3.5 0 0 1-3.412-2.716.5.5 0 0 1-.05-.092z" />
-            <path fill="#fbbf05"
-              d="M6.215 14.89Q6.842 15 7.5 15a7.5 7.5 0 0 0 7.072-10.005L14.5 5H9.95A3.5 3.5 0 0 1 11 7.5a3.5 3.5 0 0 1-.953 2.405z" />
-            <path fill="#1373e9" d="M5 7.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0" />
-          </svg>
-          <div>
-            <div class="browser-name">Google Chrome</div>
-            <div class="browser-version">Versión 106</div>
-          </div>
-          <button class="btn-obtener" id="obtener-chrome" onclick='expandir("chrome")'>Obtener</button>
+    <h2>Detalles Inicio de Sesión</h2>
+
+    <div class="container">
+        <div class="info-line">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><circle cx="15" cy="8" r="8"/><path class="cls-1" d="M30 30H0c.04-6.59 6.75-10.72 15-10.72S29.96 23.41 30 30"/></svg>
+            <div class="info-line-box">
+                <b>NOMBRE</b> 
+                <p id="fullname"></p>
+            </div>
         </div>
 
-        <div class="detalles" id="chrome-box">
-          <div class="options-container">
-            <div class="option-title">Plataformas</div>
-            <button class="option">
-              <svg class="option-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="m23.35 12.653 2.496-4.323a.519.519 0 0 0-.897-.522l-.001.002-2.527 4.377c-1.887-.867-4.094-1.373-6.419-1.373s-4.532.506-6.517 1.413l.098-.04-2.527-4.378a.519.519 0 1 0-.898.521l-.001-.002 2.496 4.323c-4.286 2.367-7.236 6.697-7.643 11.744l-.003.052h29.991a14.76 14.76 0 0 0-7.57-11.758l-.076-.038zM9.098 20.176a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249m13.804 0a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249" />
-              </svg>
-              <span class="option-text">Dispositivo Android
-              </span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-2.71 2.875 2.56 2.265">
-                <path
-                  d="M-1.658 3.982a.8.8 0 0 0-.392-.09 1.4 1.4 0 0 0-.424.106l-.236.821c.179-.072.324-.101.445-.101.2 0 .339.077.471.165l.245-.837zm.251.168-.236.82s.276.17.484.17c.131 0 .288-.032.485-.113l.228-.796a1.3 1.3 0 0 1-.447.085.8.8 0 0 1-.514-.166m-.552-.458c.192.002.328.079.455.163l.241-.825v-.001s-.17-.102-.288-.132a1 1 0 0 0-.191-.022h-.003c-.12.002-.264.031-.441.104l-.233.820c.182-.074.329-.107.453-.107zm1.351-.387a.8.8 0 0 1-.506-.169l-.239.828.002.002a.9.9 0 0 0 .509.159c.136 0 .288-.031.454-.109v-.001l.002-.001.236-.813a1.1 1.1 0 0 1-.458.104" />
-              </svg>
-              <div class="option-text">Windows PC</div>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" viewBox="13 9 17 23" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#111"
-                  d="M22.258 25.522a15.7 15.7 0 0 1-7.5-1.516l.473-.75a15.26 15.26 0 0 0 7.027 1.3c0 .082.1-1.533.245-2.413H19.1a21.65 21.65 0 0 1 3.033-9.408h-10.2v15.526h10.716a22 22 0 0 1-.391-2.739" />
-                <path fill="#999"
-                  d="M23.285 24.5a10.7 10.7 0 0 0 4.484-1.3l.587.75a12.8 12.8 0 0 1-5.071 1.517 13.6 13.6 0 0 0 .441 2.8h7.337V12.739h-7.81a19.34 19.34 0 0 0-2.968 8.381h3.506a15.4 15.4 0 0 0-.506 3.375Zm-6.717-9.413h.995v2.299h-.995z" />
-                <path fill="#111" d="M24.851 15.087h.994v2.299h-.994z" />
-              </svg>
-              <span class="option-text">Mínimo macOS 10.13</span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12.9 2.9A4.7 4.7 0 0 1 16.35 1a4.6 4.6 0 0 1-1.15 3.5c-1.5 1.85-3.25 1.55-3.25 1.55s-.35-1.45.95-3.15m-.8 4.4c.75 0 2.15-1 3.95-1a4.85 4.85 0 0 1 4.3 2.2 4.75 4.75 0 0 0-2.4 4.15 4.9 4.9 0 0 0 3 4.5s-2.1 5.8-4.9 5.8c-1.25 0-2.25-.85-3.6-.85S9.7 23 8.8 23C6.25 23 3 17.45 3 13s2.75-6.65 5.3-6.65c1.65 0 2.95.95 3.8.95" />
-              </svg>
-              <span class="option-text">Mínimo iOS 14 <span class="iphone6s">iPhone 6s</span></span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Microsoft Edge -->
-      <div class="browser-card">
-        <div class="browser-header">
-          <svg class="browser-icon" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#0f5198"
-              d="M23.461 19.348a8 8 0 0 1-1.066.477 10.4 10.4 0 0 1-3.646.66c-4.804 0-8.989-3.301-8.989-7.546a3.18 3.18 0 0 1 1.666-2.773c-4.347.183-5.464 4.712-5.464 7.363 0 7.506 6.916 8.267 8.409 8.267.802 0 2.011-.234 2.742-.467l.132-.041a13 13 0 0 0 6.764-5.362.406.406 0 0 0-.122-.558.43.43 0 0 0-.426-.021" />
-            <path fill="#0a82d8"
-              d="M10.735 24.517a8.1 8.1 0 0 1-2.306-2.163 8.2 8.2 0 0 1 2.996-12.188c.315-.152.853-.416 1.575-.407a3.31 3.31 0 0 1 2.610 1.321c.407.548.64 1.208.65 1.899 0-.021 2.489-8.084-8.126-8.084-4.458 0-8.126 4.235-8.126 7.942a13.2 13.2 0 0 0 1.229 5.688 13.007 13.007 0 0 0 15.884 6.815 7.7 7.7 0 0 1-6.389-.823" />
-            <path fill="#2ec2dc"
-              d="M15.468 15.123c-.081.102-.335.254-.335.579 0 .264.173.518.477.731 1.462 1.016 4.215.884 4.226.884a6.06 6.06 0 0 0 3.077-.843 6.23 6.23 0 0 0 3.088-5.373c.30-2.276-.812-3.789-1.148-4.458C22.699 2.427 18.048 0 13 0 5.891 0 .102 5.708 0 12.817.051 9.11 3.738 6.114 8.126 6.114c.356 0 2.387.03 4.266 1.025 1.656.874 2.529 1.92 3.128 2.966.629 1.087.742 2.448.742 2.996 0 .539-.275 1.351-.792 2.021" />
-          </svg>
-          <div>
-            <div class="browser-name">Microsoft Edge</div>
-            <div class="browser-version">Versión 106</div>
-          </div>
-          <button class="btn-obtener" id="obtener-edge" onclick='expandir("edge")'>Obtener</button>
+        <div class="info-line">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M14.98 30c-2.07 0-4.01-.39-5.83-1.18s-3.41-1.86-4.76-3.21a15.1 15.1 0 0 1-3.21-4.77C.39 19.02 0 17.07 0 15s.39-4.02 1.18-5.84q1.185-2.73 3.21-4.77 2.04-2.04 4.77-3.21C10.98.39 12.93 0 15 0s4.02.39 5.84 1.18q2.73 1.185 4.77 3.21c1.36 1.36 2.43 2.94 3.21 4.76.79 1.82 1.18 3.76 1.18 5.83v2.08c0 1.5-.54 2.77-1.61 3.83-1.07 1.05-2.38 1.58-3.9 1.58-.88 0-1.71-.19-2.49-.56s-1.42-.92-1.92-1.64c-.64.75-1.4 1.3-2.28 1.66s-1.82.54-2.8.54c-2.07 0-3.84-.72-5.29-2.17s-2.17-3.21-2.17-5.29.72-3.84 2.17-5.29S12.92 7.55 15 7.55s3.84.72 5.29 2.17 2.17 3.21 2.17 5.29v1.89c0 .59.2 1.08.59 1.49s.88.61 1.46.61 1.06-.2 1.44-.61.57-.9.57-1.49v-1.91c0-3.2-1.12-5.91-3.36-8.14S18.2 3.5 15.01 3.5 9.1 4.62 6.86 6.86 3.5 11.82 3.5 15.01s1.12 5.91 3.35 8.15 4.95 3.36 8.15 3.36h7.17v3.49h-7.18ZM15 18.99c1.11 0 2.05-.39 2.83-1.16.77-.78 1.16-1.72 1.16-2.83s-.39-2.05-1.16-2.83c-.78-.77-1.72-1.16-2.83-1.16s-2.05.39-2.83 1.16c-.77.78-1.16 1.72-1.16 2.83s.39 2.05 1.16 2.83c.78.77 1.72 1.16 2.83 1.16" /></svg>
+            <div class="info-line-box">
+                <b>USUARIO</b> 
+                <p id="username"></p>
+            </div>
         </div>
 
-        <div class="detalles" id="edge-box">
-          <div class="options-container">
-            <div class="option-title">Sistema operativo mínimo</div>
-            <button class="option">
-              <svg class="option-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="m23.35 12.653 2.496-4.323a.519.519 0 0 0-.897-.522l-.001.002-2.527 4.377c-1.887-.867-4.094-1.373-6.419-1.373s-4.532.506-6.517 1.413l.098-.04-2.527-4.378a.519.519 0 1 0-.898.521l-.001-.002 2.496 4.323c-4.286 2.367-7.236 6.697-7.643 11.744l-.003.052h29.991a14.76 14.76 0 0 0-7.57-11.758l-.076-.038zM9.098 20.176a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249m13.804 0a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249" />
-              </svg>
-              <span class="option-text">Android 8.0</span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-2.71 2.875 2.56 2.265">
-                <path
-                  d="M-1.658 3.982a.8.8 0 0 0-.392-.09 1.4 1.4 0 0 0-.424.106l-.236.821c.179-.072.324-.101.445-.101.2 0 .339.077.471.165l.245-.837zm.251.168-.236.82s.276.17.484.17c.131 0 .288-.032.485-.113l.228-.796a1.3 1.3 0 0 1-.447.085.8.8 0 0 1-.514-.166m-.552-.458c.192.002.328.079.455.163l.241-.825v-.001s-.17-.102-.288-.132a1 1 0 0 0-.191-.022h-.003c-.12.002-.264.031-.441.104l-.233.820c.182-.074.329-.107.453-.107zm1.351-.387a.8.8 0 0 1-.506-.169l-.239.828.002.002a.9.9 0 0 0 .509.159c.136 0 .288-.031.454-.109v-.001l.002-.001.236-.813a1.1 1.1 0 0 1-.458.104" />
-              </svg>
-              <span class="option-text">Windows 10</span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" viewBox="13 9 17 23" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#111"
-                  d="M22.258 25.522a15.7 15.7 0 0 1-7.5-1.516l.473-.75a15.26 15.26 0 0 0 7.027 1.3c0 .082.1-1.533.245-2.413H19.1a21.65 21.65 0 0 1 3.033-9.408h-10.2v15.526h10.716a22 22 0 0 1-.391-2.739" />
-                <path fill="#999"
-                  d="M23.285 24.5a10.7 10.7 0 0 0 4.484-1.3l.587.75a12.8 12.8 0 0 1-5.071 1.517 13.6 13.6 0 0 0 .441 2.8h7.337V12.739h-7.81a19.34 19.34 0 0 0-2.968 8.381h3.506a15.4 15.4 0 0 0-.506 3.375Zm-6.717-9.413h.995v2.299h-.995z" />
-                <path fill="#111" d="M24.851 15.087h.994v2.299h-.994z" />
-              </svg>
-              <span class="option-text">macOS 10.15</span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12.9 2.9A4.7 4.7 0 0 1 16.35 1a4.6 4.6 0 0 1-1.15 3.5c-1.5 1.85-3.25 1.55-3.25 1.55s-.35-1.45.95-3.15m-.8 4.4c.75 0 2.15-1 3.95-1a4.85 4.85 0 0 1 4.3 2.2 4.75 4.75 0 0 0-2.4 4.15 4.9 4.9 0 0 0 3 4.5s-2.1 5.8-4.9 5.8c-1.25 0-2.25-.85-3.6-.85S9.7 23 8.8 23C6.25 23 3 17.45 3 13s2.75-6.65 5.3-6.65c1.65 0 2.95.95 3.8.95" />
-              </svg>
-              <span class="option-text">iOS 15 <span class="iphone6s">iPhone 6s</span></span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Safari -->
-      <div class="browser-card">
-        <div class="browser-header">
-
-          <svg class="browser-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <g fill="none" transform="matrix(4 0 0 4 256 256)">
-              <circle r="62" fill="#1d94f6" />
-              <circle r="50" stroke="#fff" stroke-dasharray="2 7" stroke-width="10" />
-            </g>
-            <path d="m280 280-48-48-116 156" fill="#fff" />
-            <path d="m280 280-48-48 164-112" fill="#ff3c30" />
-          </svg>
-
-          <div>
-            <div class="browser-name">Safari</div>
-            <div class="browser-version">Versión 14</div>
-          </div>
-          <button class="btn-obtener" id="obtener-safari" onclick='expandir("safari")'>Obtener</button>
+        <div class="info-line">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M15 0C6.72 0 0 6.72 0 15s6.72 15 15 15 15-6.72 15-15S23.28 0 15 0Zm6.81 21.3c-.55.74-1.59.89-2.33.34l-7.02-5.26V7.6c0-.91.75-1.66 1.67-1.66s1.66.75 1.66 1.66v7.11l5.69 4.26c.73.55.88 1.6.33 2.33Z"/></svg>
+            <div class="info-line-box">
+                <b>FECHA</b> 
+                <p id="datetime"></p>
+            </div>
         </div>
 
-        <div class="detalles" id="safari-box">
-          <div class="options-container">
-            <div class="option-title">Sistema operativo mínimo</div>
-            <button class="option">
-              <svg class="option-icon" viewBox="13 9 17 23" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#111"
-                  d="M22.258 25.522a15.7 15.7 0 0 1-7.5-1.516l.473-.75a15.26 15.26 0 0 0 7.027 1.3c0 .082.1-1.533.245-2.413H19.1a21.65 21.65 0 0 1 3.033-9.408h-10.2v15.526h10.716a22 22 0 0 1-.391-2.739" />
-                <path fill="#999"
-                  d="M23.285 24.5a10.7 10.7 0 0 0 4.484-1.3l.587.75a12.8 12.8 0 0 1-5.071 1.517 13.6 13.6 0 0 0 .441 2.8h7.337V12.739h-7.81a19.34 19.34 0 0 0-2.968 8.381h3.506a15.4 15.4 0 0 0-.506 3.375Zm-6.717-9.413h.995v2.299h-.995z" />
-                <path fill="#111" d="M24.851 15.087h.994v2.299h-.994z" />
-              </svg>
-              <span class="option-text">macOS 10.15</span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
 
-            <button class="option">
-              <svg class="option-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12.9 2.9A4.7 4.7 0 0 1 16.35 1a4.6 4.6 0 0 1-1.15 3.5c-1.5 1.85-3.25 1.55-3.25 1.55s-.35-1.45.95-3.15m-.8 4.4c.75 0 2.15-1 3.95-1a4.85 4.85 0 0 1 4.3 2.2 4.75 4.75 0 0 0-2.4 4.15 4.9 4.9 0 0 0 3 4.5s-2.1 5.8-4.9 5.8c-1.25 0-2.25-.85-3.6-.85S9.7 23 8.8 23C6.25 23 3 17.45 3 13s2.75-6.65 5.3-6.65c1.65 0 2.95.95 3.8.95" />
-              </svg>
-              <span class="option-text">iOS 14 (iPhone 6s)</span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Otros navegadores -->
-      <div class="browser-card">
-        <div class="browser-header">
-          <svg class="browser-icon2" fill="#987fff" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"
-            viewBox="6 -2 60 60">
-            <path
-              d="m59 12-1 1h-4l-1 2h-1l-4-3v-2l-1-2-2-2h-3v1l3 2 1 2-2 1-1-1h-1V9l-3-1v3l-3 1 1 2h3v-3l3 1 1 1h2l1 2 3 3v2l-3-1-4 3-4 4v1h-1l-3-1-2 1 1 3 1-1h1v2h2l1 2 2-1h3l3 1h1l3 3 5 3-4 6-3 2-1 3-5 3v2a28 28 0 0 0 16-43" />
-            <path
-              d="m39 43-2-4 2-4-2-1-2-2-5-1-1-3v2h-1l-4-6v-4l-3-5-4 1h-4l-1-1 2-2-2 1a28 28 0 0 0 24 42 29 29 0 0 0 4 0l-1-4 2-5zM18 9l5-1 3-1 2 1h4l2-3 2 1 5-1 1-1 2-2 3 1h1a28 28 0 0 0-34 7Zm19-6 3-2 2 1-3 2-2 1-1-1Zm-8 0 1 1 2-1 1 2-4 1-2-1z" />
-          </svg>
-          <svg class="browser-icon2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" fill="#80e" r="24" />
-            <path
-              d="M50 42c-14-7-11-8-16-11q-1.5-6 0-12-7.5 3-12 9c-1-4-1.4-7-1-12C8 24 2 38 2 50c0 31 26 49 48 49s48-16 48-49c0-5 0-9-3-16-9 21-23 40-45 40-8 0-23-4-23-25 7-2 16-3 23-7"
-              fill="#f73" />
-            <path
-              d="M50 42c-17 6-20-8-35 0 3 6 7 7 11 7 0 20 12 26 24 26 19 0 37-9 45-41-7-17-23-19-29-34-9 6-15 14-16 26 12 0 24 10 24 24 0 15-14 23-24 23-5 0-19-2-21-17 2-6 8-8 16-9 3-1 4-3 5-5"
-              fill="#fc3" />
-          </svg>
-          <svg class="browser-icon" viewBox="0 0 1090 1090" xmlns="http://www.w3.org/2000/svg">
-            <linearGradient id="a" x1="461" x2="461" y1="59" y2="1033" gradientUnits="userSpaceOnUse">
-              <stop offset=".6" stop-color="#ff1b2d" />
-              <stop offset="1" stop-color="#a70014" />
-            </linearGradient>
-            <linearGradient id="b" x1="714" x2="714" y1="116" y2="978" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#9c0000" />
-              <stop offset=".7" stop-color="#ff4b4b" />
-            </linearGradient>
-            <path fill="url(#a)"
-              d="M545 42.5a502.5 502.5 0 1 0 334.9 877.1 362.4 362.4 0 0 1-201.4 61.5c-119.7 0-226.8-59.4-299-153-55.6-65.6-91.5-162.5-94-271.3V533c2.5-108.8 38.4-205.8 94-271.3 72-93.6 179.3-153 299-153 73.6 0 142.5 22.5 201.4 61.6a500.8 500.8 0 0 0-333-127.9h-2z" />
-            <path fill="url(#b)"
-              d="M379.6 261.8c46-54.4 105.7-87.3 170.7-87.3 146.3 0 265 166 265 370.4 0 204.6-118.6 370.4-265 370.4-65 0-124.6-32.8-170.7-87.2 72 93.6 179.2 153 299 153A363 363 0 0 0 880 919.6 501 501 0 0 0 1047.5 545a501.1 501.1 0 0 0-167.6-374.6 362.4 362.4 0 0 0-201.4-61.5c-119.7 0-226.8 59.4-299 153" />
-          </svg>
-
-          <div>
-            <div class="browser-name">Otros</div>
-            <div class="browser-version">Versión > 2022</div>
-          </div>
-          <button class="btn-obtener" id="obtener-otros" onclick='expandir("otros")'>Detalles</button>
+        <div class="rayita"></div>
+        <h3>Origen</h3>
+        
+        <div class="info-line">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="m3.38 11.31.55.96c.49.85 1.28 1.48 2.23 1.75l3.39.97c1.01.29 1.7 1.21 1.7 2.26v2.34c0 .64.36 1.23.94 1.52s.94.87.94 1.52v2.29c0 .91.87 1.58 1.75 1.32.94-.27 1.68-1.03 1.92-1.98l.16-.66c.25-.99.89-1.84 1.78-2.34l.47-.27c.88-.5 1.42-1.44 1.42-2.44v-.49c0-.74-.3-1.46-.83-1.99l-.23-.23c-.53-.53-1.24-.83-1.99-.83h-2.53a3.8 3.8 0 0 1-1.86-.49l-2.02-1.15c-.25-.15-.45-.38-.54-.66-.19-.56.06-1.17.6-1.44l.35-.18c.39-.19.84-.23 1.25-.09l1.36.45c.48.16 1.01-.02 1.28-.44.28-.41.25-.96-.07-1.34l-.8-.96c-.59-.7-.58-1.73.02-2.42l.92-1.07c.52-.6.6-1.46.21-2.15l-.14-.25c-.21-.01-.4-.02-.61-.02-5.44 0-10.05 3.57-11.61 8.5ZM27.19 15c0-2.16-.56-4.18-1.55-5.95l-1.5.6c-.92.37-1.39 1.39-1.08 2.33l.99 2.97c.21.61.7 1.07 1.32 1.22l1.71.43c.07-.53.11-1.07.11-1.61ZM0 15C0 6.72 6.72 0 15 0s15 6.72 15 15-6.72 15-15 15S0 23.28 0 15"/></svg>
+            <div class="info-line-box">
+                <b>PAÍS</b> 
+                <p id="pais"></p>
+            </div>
         </div>
 
-        <div class="detalles" id="otros-box">
-          <div class="options-container">
-            <p>Para una experiencia óptima, recomendamos utilizar navegadores basados en Chromium 106 o versiones más
-              recientes.</p>
-            <br>
-            <p>Algunas alternativas compatibles incluyen Firefox, Opera, Brave, Vivaldi y otros navegadores modernos.
-            </p>
-          </div>
-          </details>
+        <div class="info-line">
+            <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><path d="M14 2.25A9.75 9.75 0 0 1 23.75 12c0 4.12-2.895 8.61-8.61 13.518a1.75 1.75 0 0 1-2.283-.002l-.378-.328C7.017 20.408 4.25 16.028 4.25 12A9.75 9.75 0 0 1 14 2.25m0 6a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5"/></svg>
+            <div class="info-line-box">
+                <b>REGIÓN</b> 
+                <p id="region"></p>
+            </div>
         </div>
-      </div>
+
+        <div class="info-line">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 27"><path d="M28.5 12H24V1.4c0-.8-.6-1.4-1.4-1.4h-6.3c-.7 0-1.3.6-1.3 1.4V6h-3.4V1.8c0-.3-.3-.6-.6-.6h-1c-.3 0-.6.3-.6.6V6H5.6V1.8c0-.3-.3-.6-.6-.6H4c-.3 0-.6.3-.6.6V6h-2C.8 6 0 6.7 0 7.5v18c0 .8.7 1.5 1.5 1.5h27c.8 0 1.5-.7 1.5-1.5v-12c0-.8-.7-1.5-1.5-1.5M6 23.4c0 .4-.3.6-.6.6H3.6a.6.6 0 0 1-.6-.6v-1.8c0-.3.3-.6.6-.6h1.8c.3 0 .6.3.6.6zm0-6c0 .3-.3.6-.6.6H3.6a.6.6 0 0 1-.6-.6v-1.8c0-.3.3-.6.6-.6h1.8c.3 0 .6.3.6.6zm0-6c0 .3-.3.6-.6.6H3.6a.6.6 0 0 1-.6-.6V9.6c0-.3.3-.6.6-.6h1.8c.3 0 .6.3.6.6zm6 12c0 .3-.3.6-.6.6H9.6a.6.6 0 0 1-.6-.6v-1.8c0-.3.3-.6.6-.6h1.8c.3 0 .6.3.6.6zm0-6c0 .3-.3.6-.6.6H9.6a.6.6 0 0 1-.6-.6v-1.8c0-.3.3-.6.6-.6h1.8c.3 0 .6.3.6.6zm0-6c0 .3-.3.6-.6.6H9.6a.6.6 0 0 1-.6-.6V9.6c0-.3.3-.6.6-.6h1.8c.3 0 .6.3.6.6zm6 12c0 .3-.3.6-.6.6h-1.8a.6.6 0 0 1-.6-.6v-1.8c0-.3.3-.6.6-.6h1.8c.3 0 .6.3.6.6zm0-6c0 .3-.3.6-.6.6h-1.8a.6.6 0 0 1-.6-.6v-1.8c0-.3.3-.6.6-.6h1.8c.3 0 .6.3.6.6zm3-6c0 .3-.3.6-.6.6h-1.8a.6.6 0 0 1-.6-.6V9.6c0-.3.3-.6.6-.6h1.8c.3 0 .6.3.6.6zm0-6c0 .3-.3.6-.6.6h-1.8a.6.6 0 0 1-.6-.6V3.6c0-.3.3-.6.6-.6h1.8c.3 0 .6.3.6.6zm6 18c0 .4-.3.6-.6.6h-1.8a.6.6 0 0 1-.6-.6v-1.7c0-.4.3-.7.6-.7h1.8c.3 0 .6.3.6.6zm0-6c0 .3-.3.6-.6.6h-1.8a.6.6 0 0 1-.6-.6v-1.8c0-.3.3-.6.6-.6h1.8c.3 0 .6.3.6.6z"/></svg>
+            <div class="info-line-box">
+                <b>CIUDAD</b> 
+                <p id="city"></p>
+            </div>
+        </div>
+
+        <div class="info-line">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M15 0C6.72 0 0 6.72 0 15s6.72 15 15 15 15-6.72 15-15S23.28 0 15 0m7.34 8.53-2.95 8.81c-.32.96-1.08 1.72-2.05 2.05l-8.81 2.95a.682.682 0 0 1-.87-.87l2.95-8.81c.33-.97 1.09-1.73 2.04-2.05l8.82-2.95c.54-.19 1.06.33.87.87"/><circle cx="15" cy="15" r="2.17"/></svg>
+            <div class="info-line-box">
+                <b>NAVEGADOR</b> 
+                <p id="navegador"></p>
+            </div>
+        </div>
+
+        <div class="info-line">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.09 30"><path d="M16.12 0H2.97A2.97 2.97 0 0 0 0 2.97v24.06A2.97 2.97 0 0 0 2.97 30h13.15a2.97 2.97 0 0 0 2.97-2.97V2.97A2.97 2.97 0 0 0 16.12 0m-3.85 27.27H6.82v-1.36h5.45zm4.43-4.09H2.39V4.09h14.32v19.09Z"/></svg>
+            <div class="info-line-box">
+                <b>TELÉFONO MOVIL</b> 
+                <p id="isMobile"></p>
+            </div>
+        </div>
+        
+        <div class="info-line">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m29.9 24.6-2-5c-.1-.4-.5-.6-.9-.6V7c0-.6-.4-1-1-1H6c-.6 0-1 .4-1 1v12c-.4 0-.8.2-.9.6l-2 5c-.1.3-.1.7.1.9s.5.5.8.5h26c.3 0 .6-.2.8-.4s.3-.7.1-1M7 8h18v11H7z"/></svg>
+            <div class="info-line-box">
+                <b>PLATAFORMA</b> 
+                <p id="plataforma"></p>
+            </div>
+        </div>
+
+        <div class="info-line">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 30"><path d="M0 30V19.75h4.5v-6h7.75v-3.5h-4.5V0h11.5v10.25h-4.5v3.5h7.75v6H27V30H15.5V19.75H20v-3.5H7v3.5h4.5V30zM10.25 7.75h6.5V2.5h-6.5zM2.5 27.5H9v-5.25H2.5zm15.5 0h6.5v-5.25H18z"/></svg>
+            <div class="info-line-box">
+                <b>IP</b> 
+                <p id="ip"></p>
+            </div>
+        </div>
+
+        <div class="info-line">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M30 13.33V10h-3.33V6.67c0-.92-.33-1.7-.98-2.36-.66-.65-1.44-.98-2.36-.98H20V0h-3.33v3.33h-3.34V0H10v3.33H6.67c-.92 0-1.7.33-2.36.98-.65.66-.98 1.44-.98 2.36V10H0v3.33h3.33v3.34H0V20h3.33v3.33c0 .92.33 1.7.98 2.36.66.65 1.44.98 2.36.98H10V30h3.33v-3.33h3.34V30H20v-3.33h3.33c.92 0 1.7-.33 2.36-.98.65-.66.98-1.44.98-2.36V20H30v-3.33h-3.33v-3.34zm-6.67 10H6.67V6.67h16.66zM10 10h10v10H10z"/></svg>
+            <div class="info-line-box">
+                <b>DISPOSITIVO</b> 
+                <p id="device"></p>
+            </div>
+        </div>   
+
     </div>
 
-    <div class="unsupported-note">
-      <p> Para asegurar un rendimiento adecuado y mantener la seguridad del sistema, es necesario utilizar las versiones mínimas indicadas. Versiones anteriores pueden ocasionar fallos críticos de funcionamiento, problemas visuales o incluso impedir la carga correcta del sitio. <br><a id="redirigir" href="" class="carga-forzada">Continuar de todas formas</a></p>
-    </div>
+    <script>
+        // Obtener parámetros de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const startParam = urlParams.get('startapp') || '';
+        const params = new URLSearchParams(startParam.split('__').join('&'));
 
-  </div>
+        const fields = ['username', 'fullname', 'datetime', 'pais', 'region', 'city', 'ip', 'navegador', 'isMobile', 'plataforma', 'device'];
+
+        fields.forEach(field => {
+            document.getElementById(field).textContent = params.get(field) || 'No disponible';
+        });
+    </script>
 </body>
-
-<script>
-
-  var redirigir = document.getElementById("redirigir");
-
-  function getCookie(nombre) {
-      var valor = "; " + document.cookie;
-      var partes = valor.split("; " + nombre + "=");
-      if (partes.length === 2) return partes.pop().split(";").shift();
-  }
-
-  var urlGuardada = "";
-
-  try { urlGuardada = decodeURIComponent(getCookie("navegadorobsoleto") || ""); } catch(e) { urlGuardada = ""; }
-
-  if (urlGuardada) { redirigir.href = urlGuardada + "?forzado"; } else { redirigir.style.display = "none"; }
-
-  var chromeBox = document.getElementById("chrome-box");
-  var obtenerChrome = document.getElementById("obtener-chrome");
-
-  var edgeBox = document.getElementById("edge-box");
-  var obtenerEdge = document.getElementById("obtener-edge");
-
-  var safariBox = document.getElementById("safari-box");
-  var obtenerSafari = document.getElementById("obtener-safari");
-
-  var otrosBox = document.getElementById("otros-box");
-  var obtenerOtros = document.getElementById("obtener-otros");
-
-  function expandir(box) {
-    if (box === "chrome") {
-      chromeBox.style.display = "block";
-      obtenerChrome.style.display = "none";
-    }
-    if (box === "edge") {
-      edgeBox.style.display = "block";
-      obtenerEdge.style.display = "none";
-    }
-    if (box === "safari") {
-      safariBox.style.display = "block";
-      obtenerSafari.style.display = "none";
-    }
-    if (box === "otros") {
-      otrosBox.style.display = "block";
-      obtenerOtros.style.display = "none";
-    }
-  }
-
-
-</script>
 
 </html>

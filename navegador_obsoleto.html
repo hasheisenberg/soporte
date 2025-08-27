@@ -2,662 +2,852 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Navegador obsoleto</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
+    <meta charset="UTF-8">
+    <title>Navegador obsoleto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: -webkit-flex;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #202124;
+            text-align: center;
+            padding: 1rem;
+            line-height: 1.5;
+            background-color: #f2f2f2;
+        }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      display: -webkit-flex;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      color: #202124;
-      text-align: center;
-      padding: 1rem;
-      line-height: 1.5;
-      background-color: #f2f2f2;
-    }
+        #container {
+            max-width: 660px;
+            width: 100%;
+            display: none;
+        }
 
-    #container {
-      max-width: 660px;
-      width: 100%;
-    }
-    #install {
-      display: none;
-      background-color: #eee;
-      text-align: start;
-      padding: 1rem;
-      border-radius: 1rem;
-      border: 1px solid #ddd;
-      min-width: 250px;
-    }
+        #install {
+            margin: 2rem;
+            max-width: 750px;
+            background-color: #fff;
+            text-align: start;
+            border-radius: 1rem;
+            border: 1px solid #ddd;
+        }
 
-    .botones-install {
-      display: flex;
-      margin-top: 1rem;
-    }
+        .install-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            padding: 1.25rem;
+            background-color: #333;
+            color: white;
+            font-size: 1.25rem;
+            border-radius: 1rem 1rem 0rem 0rem;
+        }
 
-    #install div {
-      margin-bottom: 0.5rem;
-    }
-    #install svg {
-      min-height: 1.2rem;
-      min-width: 1.2rem;
-      height: 1.2rem;
-      width: 1.2rem;
-    }
-    #install a,
-    #install button {
-      width: 100%;
-      cursor: pointer;
-      padding: 0.5rem;
-      font-size: 0.9rem;
-      letter-spacing: 0.025rem;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      border: none;
-      background-color: #4244bd;
-      border-radius: 0.5rem;
-      color: white;
-    }
+        #install-browser {
+            margin-right: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 0.05rem;
+        }
 
-    #install svg {
-      fill: white;
-    }
+        .install-header button {
+            color: #ddd;
+            font-weight: bold;
+            border-radius: 1rem;
+            padding: 0.5rem 0.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            letter-spacing: 0.025rem;
+            margin-left: auto;
+            border: none;
+            background-color: #555;
+            cursor: pointer;
+        }
+        .install-header svg {
+            fill: #ddd;
+            height: 0.7rem;
+            margin-right: 0.45rem;
+        }
 
-    label {
-      font-size: 0.85rem;
-      color: #777;
-    }
-
-    h1 {
-      font-size: 1.75rem;
-      color: #d93025;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-    }
-
-    p {
-      font-size: 0.9rem;
-      color: #5f6368;
-    }
-
-    .browsers-container {
-      display: -webkit-flex;
-      display: flex; 
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: -8px;
-      margin-top: 5px;
-    }
-
-    .browser-card {
-      margin: 8px;
-      -webkit-flex: 1 1 300px;
-      flex: 1 1 300px;
-      max-width: calc(50% - 15px);
-      background: white;
-      border-radius: 12px;
-      padding: 1rem;
-      border: 1px solid #dadce0;
-      text-align: left;
-    }
-
-    .browser-header {
-      display: -webkit-flex;
-      display: flex;
-      align-items: center;
-    }
-
-    .browser-icon {
-      margin-right: 0.75rem;
-      width: 35px;
-      height: 35px;
-      flex-shrink: 0;
-    }
-
-    .browser-icon2 {
-      margin-right: -1.1rem;
-      width: 35px;
-      height: 35px;
-      flex-shrink: 0;
-    }
-
-
-    .browser-name {
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    .browser-version {
-      color: #5f6368;
-      font-size: 0.85rem;
-      margin-top: -0.10rem;
-
-    }
-
-    .options-container {
-      margin-top: 1rem;
-    }
-
-    .options-container p {
-      margin: 0px;
-      font-size: 15px;
-    }
-
-    .option-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: #5f6368;
-    }
+        .install-header button:hover {
+            background-color: #777;
+            color: white;
+        }
+        .install-header button:hover svg {
+            fill: white;
+        }
 
 
 
-    .option {
-      display: -webkit-flex;
-      display: flex;
-      align-items: center;
-      padding: 0.5rem 0.75rem;
-      border-radius: 8px;
-      margin-top: 0.75rem;
-      background-color: #f2f2f2;
-      border: 1px solid transparent;
-      transition: all 0.2s;
-      cursor: pointer;
-      width: 100%;
-      text-align: left;
-    }
+        .install-main {
+            display: flex;
+            flex-direction: row;
+            margin-top: 15px;
+        }
 
-    .option:hover {
-      background-color: #e8f0fe;
-      border-color: #1a73e8;
-    }
+        .info-app {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .iphone6s {
-      background-color: #ddd;
-      padding: 2px 5px;
-      border-radius: 5px;
-      color: #555;
-    }
+        .bajar-app {
+            display: flex;
+            flex-direction: column;
+            min-width: 300px;
+            width: 100%;
+            border-left: 1px solid #e5e5e5;
+            margin-bottom: 15px;
+        }
 
-    .option-icon {
-      min-width: 1.5rem;
-      min-height: 1.5rem;
-      width: 1.5rem;
-      height: 1.5rem;
-      margin-right: 0.75rem;
-      flex-shrink: 0;
-    }
+        .info-app-box {
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 7.5px;
+        }
+  
 
-    .option-text {
-      font-size: 0.9rem;
-      flex-grow: 1;
-    }
-
-    .download-icon {
-      width: 16px;
-      height: 16px;
-    }
+        .info-app-box label {
+            font-size: 0.8rem;
+            color: #777;
+        }
 
 
-    .unsupported-note {
-      width: fit-content;
-      margin-top: 1rem;
-      padding: 0.5rem 0.65rem;
-      background-color: #ffebe0;
-      border: 1px solid #ffd0b9;
-      border-radius: 10px;
-      text-align: left;
-    }
 
-    .option1 {
-      font-weight: bold;
-      font-size: 0.9rem;
-    }
-    .option2 {
-      color: #777;
-      font-weight: normal;
-      font-size: 0.8rem;
-    }
-    .detalles {
-      display: none;
-    }
+        .install-infoBox div {
+            font-size: 0.9rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .install-infoBox .label {
+            font-size: 0.8rem;
+            color: #777;
+            font-weight: normal;
+        }
 
-    .btn-obtener {
-      margin-left: auto;
-      padding: 5px 10px;
-      border-radius: 15px;
-      border: none;
-      background-color: #1a73e8;
-      color: white;
-      font-size: 0.8rem;
-      letter-spacing: 0.015rem;
-      cursor: pointer;
-    }
-    #descargaMensaje {
-      display: none;
-    }
+        h3 {
+            font-size: 1.1rem;
+            padding: 0px 15px;
+            color: #555;
+        }
 
-    .btn-obtener:hover {
-      background-color: #165ab4;
-    }
+.install-infoBox {
+    margin: 7.5px;
+    -webkit-flex: 1 1;
+    flex: 1 1;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 5px 7.5px;
+    text-align: left;
+}
 
-    .volver {
-      background-color: red;
-    }
+.install-device {
+    white-space: nowrap;
+}
+
+.btn-descargar-app {
+text-align: center;
+margin: 15px 15px 0px;
+background-color: #eee;
+border-radius: 5px;
+padding: 7.5px 10px;
+color: #555;
+text-decoration: none;
+margin-top: auto;
+border: 1px solid #ccc;
+}
+.btn-descargar-app:hover {
+    background-color: #ddd;
+    color: #111;
+    border: 1px solid #aaa;
+}
+
+.plecas {
+    position: relative;
+    margin: 0px 15px;
+    margin-bottom: 15px;
+}
+.plecas p {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+.plecas p::after {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 5px;
+    background-color: #777;
+    position: absolute;
+    left: 0px;
+}
 
 
-    @media (max-width: 660px) {
-      h1 {
-        font-size: 1.5rem;
-      }
+@media (max-width: 550px) {
+        body {
+            display: block;
+        }
 
-      p {
-        font-size: 1rem;
-      }
+       .install-main {
+            display: flex;
+            flex-direction: column;
+            margin-top: 15px;
+        }
+        #install {
+            height: 100vh;
+            margin: -1rem;
+            border-radius: 0rem;
+            border: none;
+        }
+        .bajar-app {
+            border-left: none;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        .install-header {
+            border-radius: 0rem;
+        }
+}
 
 
-.browser-card {
-    flex: 1 1 100%; 
-    max-width: 100%;
-  }
-    }
-  </style>
+
+
+
+
+
+        h1 {
+            font-size: 1.75rem;
+            color: #d93025;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #5f6368;
+        }
+
+        .browsers-container {
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: -8px;
+            margin-top: 5px;
+        }
+
+        .browser-card {
+            height: 100%;
+            margin: 8px;
+            -webkit-flex: 1 1 300px;
+            flex: 1 1 300px;
+            max-width: calc(50% - 15px);
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid #dadce0;
+            text-align: left;
+        }
+
+        .browser-header {
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+        }
+
+        .browser-icon {
+            margin-right: 0.75rem;
+            width: 35px;
+            height: 35px;
+            flex-shrink: 0;
+        }
+
+        .browser-icon2 {
+            margin-right: -1.1rem;
+            width: 35px;
+            height: 35px;
+            flex-shrink: 0;
+        }
+
+
+        .browser-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .browser-version {
+            color: #5f6368;
+            font-size: 0.85rem;
+            margin-top: -0.10rem;
+
+        }
+
+        .options-container {
+            margin-top: 1rem;
+        }
+
+        .options-container p {
+            margin: 0px;
+            font-size: 15px;
+        }
+
+        .option-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #5f6368;
+        }
+
+
+
+        .option {
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            margin-top: 0.75rem;
+            background-color: #f2f2f2;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+        }
+
+        .option:hover {
+            background-color: #e8f0fe;
+            border-color: #1a73e8;
+        }
+
+        .iphone6s {
+            background-color: #ddd;
+            padding: 2px 5px;
+            border-radius: 5px;
+            color: #555;
+        }
+
+        .option-icon {
+            min-width: 1.5rem;
+            min-height: 1.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .option-text {
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        .download-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+
+        .unsupported-note {
+            width: fit-content;
+            margin-top: 1rem;
+            padding: 0.5rem 0.65rem;
+            background-color: #ffebe0;
+            border: 1px solid #ffd0b9;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .option1 {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .option2 {
+            color: #777;
+            font-weight: normal;
+            font-size: 0.8rem;
+        }
+
+        .detalles {
+            display: none;
+        }
+
+        .btn-obtener {
+            margin-left: auto;
+            padding: 5px 10px;
+            border-radius: 15px;
+            border: none;
+            background-color: #1a73e8;
+            color: white;
+            font-size: 0.8rem;
+            letter-spacing: 0.015rem;
+            cursor: pointer;
+        }
+
+        #descargaMensaje {
+            display: none;
+        }
+
+        .btn-obtener:hover {
+            background-color: #165ab4;
+        }
+
+
+        @media (max-width: 660px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+
+            .browser-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 
-  <div id="container">
-    <h1>Navegador no compatible</h1>
-    <br>
-    <p>Versiones mínimas requeridas de los princiaples navegadores web para poder usar la plataforma:</p>
+    <div id="container">
+        <h1>Navegador no compatible</h1>
+        <br>
+        <p>Versiones mínimas requeridas de los princiaples navegadores web para poder usar la plataforma:</p>
 
-    <div class="browsers-container">
-      <!-- Google Chrome -->
-      <div class="browser-card">
-        <div class="browser-header">
-          <svg class="browser-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#e53b2c"
-              d="M2.503 1.907A7.47 7.47 0 0 1 7.5 0a7.5 7.5 0 0 1 6.635 4H7.5a3.5 3.5 0 0 0-3.23 2.149z" />
-            <path fill="#209742"
-              d="M1.745 2.69a7.503 7.503 0 0 0 3.41 11.937l2.812-3.658Q7.737 11 7.5 11a3.5 3.5 0 0 1-3.412-2.716.5.5 0 0 1-.05-.092z" />
-            <path fill="#fbbf05"
-              d="M6.215 14.89Q6.842 15 7.5 15a7.5 7.5 0 0 0 7.072-10.005L14.5 5H9.95A3.5 3.5 0 0 1 11 7.5a3.5 3.5 0 0 1-.953 2.405z" />
-            <path fill="#1373e9" d="M5 7.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0" />
-          </svg>
-          <div>
-            <div class="browser-name">Google Chrome</div>
-            <div class="browser-version">Versión 106</div>
-          </div>
-          <button class="btn-obtener" id="obtener-chrome" onclick='expandir("chrome")'>Obtener</button>
+        <div class="browsers-container">
+            <!-- Google Chrome -->
+            <div class="browser-card">
+                <div class="browser-header">
+                    <svg class="browser-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#e53b2c"
+                            d="M2.503 1.907A7.47 7.47 0 0 1 7.5 0a7.5 7.5 0 0 1 6.635 4H7.5a3.5 3.5 0 0 0-3.23 2.149z" />
+                        <path fill="#209742"
+                            d="M1.745 2.69a7.503 7.503 0 0 0 3.41 11.937l2.812-3.658Q7.737 11 7.5 11a3.5 3.5 0 0 1-3.412-2.716.5.5 0 0 1-.05-.092z" />
+                        <path fill="#fbbf05"
+                            d="M6.215 14.89Q6.842 15 7.5 15a7.5 7.5 0 0 0 7.072-10.005L14.5 5H9.95A3.5 3.5 0 0 1 11 7.5a3.5 3.5 0 0 1-.953 2.405z" />
+                        <path fill="#1373e9" d="M5 7.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0" />
+                    </svg>
+                    <div>
+                        <div class="browser-name">Google Chrome</div>
+                        <div class="browser-version">Versión 106</div>
+                    </div>
+                    <button class="btn-obtener" id="obtener-chrome" onclick='expandir("chrome")'>Obtener</button>
+                </div>
+
+                <div class="detalles" id="chrome-box">
+                    <div class="options-container">
+                        <div class="option-title">Plataformas</div>
+                        <button class="option"
+                            onclick="descargar('Google Chrome', '106.582', 'Dispositivo Android', 'Android 6.0', '115MB')">
+                            <svg class="option-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m23.35 12.653 2.496-4.323a.519.519 0 0 0-.897-.522l-.001.002-2.527 4.377c-1.887-.867-4.094-1.373-6.419-1.373s-4.532.506-6.517 1.413l.098-.04-2.527-4.378a.519.519 0 1 0-.898.521l-.001-.002 2.496 4.323c-4.286 2.367-7.236 6.697-7.643 11.744l-.003.052h29.991a14.76 14.76 0 0 0-7.57-11.758l-.076-.038zM9.098 20.176a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249m13.804 0a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249" />
+                            </svg>
+                            <span class="option-text">Dispositivo Android
+                            </span>
+                            <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
+                            </svg>
+                        </button>
+
+                        <button class="option">
+                            <svg class="option-icon" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="-2.71 2.875 2.56 2.265">
+                                <path
+                                    d="M-1.658 3.982a.8.8 0 0 0-.392-.09 1.4 1.4 0 0 0-.424.106l-.236.821c.179-.072.324-.101.445-.101.2 0 .339.077.471.165l.245-.837zm.251.168-.236.82s.276.17.484.17c.131 0 .288-.032.485-.113l.228-.796a1.3 1.3 0 0 1-.447.085.8.8 0 0 1-.514-.166m-.552-.458c.192.002.328.079.455.163l.241-.825v-.001s-.17-.102-.288-.132a1 1 0 0 0-.191-.022h-.003c-.12.002-.264.031-.441.104l-.233.820c.182-.074.329-.107.453-.107zm1.351-.387a.8.8 0 0 1-.506-.169l-.239.828.002.002a.9.9 0 0 0 .509.159c.136 0 .288-.031.454-.109v-.001l.002-.001.236-.813a1.1 1.1 0 0 1-.458.104" />
+                            </svg>
+                            <div class="option-text">Windows PC</div>
+                            <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
+                            </svg>
+                        </button>
+
+                        <button class="option">
+                            <svg class="option-icon" viewBox="13 9 17 23" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#111"
+                                    d="M22.258 25.522a15.7 15.7 0 0 1-7.5-1.516l.473-.75a15.26 15.26 0 0 0 7.027 1.3c0 .082.1-1.533.245-2.413H19.1a21.65 21.65 0 0 1 3.033-9.408h-10.2v15.526h10.716a22 22 0 0 1-.391-2.739" />
+                                <path fill="#999"
+                                    d="M23.285 24.5a10.7 10.7 0 0 0 4.484-1.3l.587.75a12.8 12.8 0 0 1-5.071 1.517 13.6 13.6 0 0 0 .441 2.8h7.337V12.739h-7.81a19.34 19.34 0 0 0-2.968 8.381h3.506a15.4 15.4 0 0 0-.506 3.375Zm-6.717-9.413h.995v2.299h-.995z" />
+                                <path fill="#111" d="M24.851 15.087h.994v2.299h-.994z" />
+                            </svg>
+                            <span class="option-text">Mínimo macOS 10.13</span>
+                            <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
+                            </svg>
+                        </button>
+
+                        <button class="option">
+                            <svg class="option-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.9 2.9A4.7 4.7 0 0 1 16.35 1a4.6 4.6 0 0 1-1.15 3.5c-1.5 1.85-3.25 1.55-3.25 1.55s-.35-1.45.95-3.15m-.8 4.4c.75 0 2.15-1 3.95-1a4.85 4.85 0 0 1 4.3 2.2 4.75 4.75 0 0 0-2.4 4.15 4.9 4.9 0 0 0 3 4.5s-2.1 5.8-4.9 5.8c-1.25 0-2.25-.85-3.6-.85S9.7 23 8.8 23C6.25 23 3 17.45 3 13s2.75-6.65 5.3-6.65c1.65 0 2.95.95 3.8.95" />
+                            </svg>
+                            <span class="option-text">Mínimo iOS 14 <span class="iphone6s">iPhone 6s</span></span>
+                            <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Microsoft Edge -->
+            <div class="browser-card">
+                <div class="browser-header">
+                    <svg class="browser-icon" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#0f5198"
+                            d="M23.461 19.348a8 8 0 0 1-1.066.477 10.4 10.4 0 0 1-3.646.66c-4.804 0-8.989-3.301-8.989-7.546a3.18 3.18 0 0 1 1.666-2.773c-4.347.183-5.464 4.712-5.464 7.363 0 7.506 6.916 8.267 8.409 8.267.802 0 2.011-.234 2.742-.467l.132-.041a13 13 0 0 0 6.764-5.362.406.406 0 0 0-.122-.558.43.43 0 0 0-.426-.021" />
+                        <path fill="#0a82d8"
+                            d="M10.735 24.517a8.1 8.1 0 0 1-2.306-2.163 8.2 8.2 0 0 1 2.996-12.188c.315-.152.853-.416 1.575-.407a3.31 3.31 0 0 1 2.610 1.321c.407.548.64 1.208.65 1.899 0-.021 2.489-8.084-8.126-8.084-4.458 0-8.126 4.235-8.126 7.942a13.2 13.2 0 0 0 1.229 5.688 13.007 13.007 0 0 0 15.884 6.815 7.7 7.7 0 0 1-6.389-.823" />
+                        <path fill="#2ec2dc"
+                            d="M15.468 15.123c-.081.102-.335.254-.335.579 0 .264.173.518.477.731 1.462 1.016 4.215.884 4.226.884a6.06 6.06 0 0 0 3.077-.843 6.23 6.23 0 0 0 3.088-5.373c.30-2.276-.812-3.789-1.148-4.458C22.699 2.427 18.048 0 13 0 5.891 0 .102 5.708 0 12.817.051 9.11 3.738 6.114 8.126 6.114c.356 0 2.387.03 4.266 1.025 1.656.874 2.529 1.92 3.128 2.966.629 1.087.742 2.448.742 2.996 0 .539-.275 1.351-.792 2.021" />
+                    </svg>
+                    <div>
+                        <div class="browser-name">Microsoft Edge</div>
+                        <div class="browser-version">Versión 106</div>
+                    </div>
+                    <button class="btn-obtener" id="obtener-edge" onclick='expandir("edge")'>Obtener</button>
+                </div>
+
+                <div class="detalles" id="edge-box">
+                    <div class="options-container">
+                        <div class="option-title">Sistema operativo mínimo</div>
+                        <button class="option">
+                            <svg class="option-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m23.35 12.653 2.496-4.323a.519.519 0 0 0-.897-.522l-.001.002-2.527 4.377c-1.887-.867-4.094-1.373-6.419-1.373s-4.532.506-6.517 1.413l.098-.04-2.527-4.378a.519.519 0 1 0-.898.521l-.001-.002 2.496 4.323c-4.286 2.367-7.236 6.697-7.643 11.744l-.003.052h29.991a14.76 14.76 0 0 0-7.57-11.758l-.076-.038zM9.098 20.176a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249m13.804 0a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249" />
+                            </svg>
+                            <span class="option-text">Android 8.0</span>
+                            <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
+                            </svg>
+                        </button>
+
+                        <button class="option">
+                            <svg class="option-icon" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="-2.71 2.875 2.56 2.265">
+                                <path
+                                    d="M-1.658 3.982a.8.8 0 0 0-.392-.09 1.4 1.4 0 0 0-.424.106l-.236.821c.179-.072.324-.101.445-.101.2 0 .339.077.471.165l.245-.837zm.251.168-.236.82s.276.17.484.17c.131 0 .288-.032.485-.113l.228-.796a1.3 1.3 0 0 1-.447.085.8.8 0 0 1-.514-.166m-.552-.458c.192.002.328.079.455.163l.241-.825v-.001s-.17-.102-.288-.132a1 1 0 0 0-.191-.022h-.003c-.12.002-.264.031-.441.104l-.233.820c.182-.074.329-.107.453-.107zm1.351-.387a.8.8 0 0 1-.506-.169l-.239.828.002.002a.9.9 0 0 0 .509.159c.136 0 .288-.031.454-.109v-.001l.002-.001.236-.813a1.1 1.1 0 0 1-.458.104" />
+                            </svg>
+                            <span class="option-text">Windows 10</span>
+                            <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
+                            </svg>
+                        </button>
+
+                        <button class="option">
+                            <svg class="option-icon" viewBox="13 9 17 23" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#111"
+                                    d="M22.258 25.522a15.7 15.7 0 0 1-7.5-1.516l.473-.75a15.26 15.26 0 0 0 7.027 1.3c0 .082.1-1.533.245-2.413H19.1a21.65 21.65 0 0 1 3.033-9.408h-10.2v15.526h10.716a22 22 0 0 1-.391-2.739" />
+                                <path fill="#999"
+                                    d="M23.285 24.5a10.7 10.7 0 0 0 4.484-1.3l.587.75a12.8 12.8 0 0 1-5.071 1.517 13.6 13.6 0 0 0 .441 2.8h7.337V12.739h-7.81a19.34 19.34 0 0 0-2.968 8.381h3.506a15.4 15.4 0 0 0-.506 3.375Zm-6.717-9.413h.995v2.299h-.995z" />
+                                <path fill="#111" d="M24.851 15.087h.994v2.299h-.994z" />
+                            </svg>
+                            <span class="option-text">macOS 10.15</span>
+                            <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
+                            </svg>
+                        </button>
+
+                        <button class="option">
+                            <svg class="option-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.9 2.9A4.7 4.7 0 0 1 16.35 1a4.6 4.6 0 0 1-1.15 3.5c-1.5 1.85-3.25 1.55-3.25 1.55s-.35-1.45.95-3.15m-.8 4.4c.75 0 2.15-1 3.95-1a4.85 4.85 0 0 1 4.3 2.2 4.75 4.75 0 0 0-2.4 4.15 4.9 4.9 0 0 0 3 4.5s-2.1 5.8-4.9 5.8c-1.25 0-2.25-.85-3.6-.85S9.7 23 8.8 23C6.25 23 3 17.45 3 13s2.75-6.65 5.3-6.65c1.65 0 2.95.95 3.8.95" />
+                            </svg>
+                            <span class="option-text">iOS 15 <span class="iphone6s">iPhone 6s</span></span>
+                            <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safari -->
+            <div class="browser-card">
+                <div class="browser-header">
+
+                    <svg class="browser-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <g fill="none" transform="matrix(4 0 0 4 256 256)">
+                            <circle r="62" fill="#1d94f6" />
+                            <circle r="50" stroke="#fff" stroke-dasharray="2 7" stroke-width="10" />
+                        </g>
+                        <path d="m280 280-48-48-116 156" fill="#fff" />
+                        <path d="m280 280-48-48 164-112" fill="#ff3c30" />
+                    </svg>
+
+                    <div>
+                        <div class="browser-name">Safari</div>
+                        <div class="browser-version">Versión 14</div>
+                    </div>
+                    <button class="btn-obtener" id="obtener-safari" onclick='expandir("safari")'>Obtener</button>
+                </div>
+
+                <div class="detalles" id="safari-box">
+                    <div class="options-container">
+                        <div class="option-title">Sistema operativo mínimo</div>
+                        <button class="option">
+                            <svg class="option-icon" viewBox="13 9 17 23" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#111"
+                                    d="M22.258 25.522a15.7 15.7 0 0 1-7.5-1.516l.473-.75a15.26 15.26 0 0 0 7.027 1.3c0 .082.1-1.533.245-2.413H19.1a21.65 21.65 0 0 1 3.033-9.408h-10.2v15.526h10.716a22 22 0 0 1-.391-2.739" />
+                                <path fill="#999"
+                                    d="M23.285 24.5a10.7 10.7 0 0 0 4.484-1.3l.587.75a12.8 12.8 0 0 1-5.071 1.517 13.6 13.6 0 0 0 .441 2.8h7.337V12.739h-7.81a19.34 19.34 0 0 0-2.968 8.381h3.506a15.4 15.4 0 0 0-.506 3.375Zm-6.717-9.413h.995v2.299h-.995z" />
+                                <path fill="#111" d="M24.851 15.087h.994v2.299h-.994z" />
+                            </svg>
+                            <span class="option-text">macOS 10.15</span>
+                            <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
+                            </svg>
+                        </button>
+
+                        <button class="option">
+                            <svg class="option-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.9 2.9A4.7 4.7 0 0 1 16.35 1a4.6 4.6 0 0 1-1.15 3.5c-1.5 1.85-3.25 1.55-3.25 1.55s-.35-1.45.95-3.15m-.8 4.4c.75 0 2.15-1 3.95-1a4.85 4.85 0 0 1 4.3 2.2 4.75 4.75 0 0 0-2.4 4.15 4.9 4.9 0 0 0 3 4.5s-2.1 5.8-4.9 5.8c-1.25 0-2.25-.85-3.6-.85S9.7 23 8.8 23C6.25 23 3 17.45 3 13s2.75-6.65 5.3-6.65c1.65 0 2.95.95 3.8.95" />
+                            </svg>
+                            <span class="option-text">iOS 14 (iPhone 6s)</span>
+                            <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Otros navegadores -->
+            <div class="browser-card">
+                <div class="browser-header">
+                    <svg class="browser-icon2" fill="#987fff" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"
+                        viewBox="6 -2 60 60">
+                        <path
+                            d="m59 12-1 1h-4l-1 2h-1l-4-3v-2l-1-2-2-2h-3v1l3 2 1 2-2 1-1-1h-1V9l-3-1v3l-3 1 1 2h3v-3l3 1 1 1h2l1 2 3 3v2l-3-1-4 3-4 4v1h-1l-3-1-2 1 1 3 1-1h1v2h2l1 2 2-1h3l3 1h1l3 3 5 3-4 6-3 2-1 3-5 3v2a28 28 0 0 0 16-43" />
+                        <path
+                            d="m39 43-2-4 2-4-2-1-2-2-5-1-1-3v2h-1l-4-6v-4l-3-5-4 1h-4l-1-1 2-2-2 1a28 28 0 0 0 24 42 29 29 0 0 0 4 0l-1-4 2-5zM18 9l5-1 3-1 2 1h4l2-3 2 1 5-1 1-1 2-2 3 1h1a28 28 0 0 0-34 7Zm19-6 3-2 2 1-3 2-2 1-1-1Zm-8 0 1 1 2-1 1 2-4 1-2-1z" />
+                    </svg>
+                    <svg class="browser-icon2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" fill="#80e" r="24" />
+                        <path
+                            d="M50 42c-14-7-11-8-16-11q-1.5-6 0-12-7.5 3-12 9c-1-4-1.4-7-1-12C8 24 2 38 2 50c0 31 26 49 48 49s48-16 48-49c0-5 0-9-3-16-9 21-23 40-45 40-8 0-23-4-23-25 7-2 16-3 23-7"
+                            fill="#f73" />
+                        <path
+                            d="M50 42c-17 6-20-8-35 0 3 6 7 7 11 7 0 20 12 26 24 26 19 0 37-9 45-41-7-17-23-19-29-34-9 6-15 14-16 26 12 0 24 10 24 24 0 15-14 23-24 23-5 0-19-2-21-17 2-6 8-8 16-9 3-1 4-3 5-5"
+                            fill="#fc3" />
+                    </svg>
+                    <svg class="browser-icon" viewBox="0 0 1090 1090" xmlns="http://www.w3.org/2000/svg">
+                        <linearGradient id="a" x1="461" x2="461" y1="59" y2="1033" gradientUnits="userSpaceOnUse">
+                            <stop offset=".6" stop-color="#ff1b2d" />
+                            <stop offset="1" stop-color="#a70014" />
+                        </linearGradient>
+                        <linearGradient id="b" x1="714" x2="714" y1="116" y2="978" gradientUnits="userSpaceOnUse">
+                            <stop offset="0" stop-color="#9c0000" />
+                            <stop offset=".7" stop-color="#ff4b4b" />
+                        </linearGradient>
+                        <path fill="url(#a)"
+                            d="M545 42.5a502.5 502.5 0 1 0 334.9 877.1 362.4 362.4 0 0 1-201.4 61.5c-119.7 0-226.8-59.4-299-153-55.6-65.6-91.5-162.5-94-271.3V533c2.5-108.8 38.4-205.8 94-271.3 72-93.6 179.3-153 299-153 73.6 0 142.5 22.5 201.4 61.6a500.8 500.8 0 0 0-333-127.9h-2z" />
+                        <path fill="url(#b)"
+                            d="M379.6 261.8c46-54.4 105.7-87.3 170.7-87.3 146.3 0 265 166 265 370.4 0 204.6-118.6 370.4-265 370.4-65 0-124.6-32.8-170.7-87.2 72 93.6 179.2 153 299 153A363 363 0 0 0 880 919.6 501 501 0 0 0 1047.5 545a501.1 501.1 0 0 0-167.6-374.6 362.4 362.4 0 0 0-201.4-61.5c-119.7 0-226.8 59.4-299 153" />
+                    </svg>
+
+                    <div>
+                        <div class="browser-name">Otros</div>
+                        <div class="browser-version">Versión > 2022</div>
+                    </div>
+                    <button class="btn-obtener" id="obtener-otros" onclick='expandir("otros")'>Detalles</button>
+                </div>
+
+                <div class="detalles" id="otros-box">
+                    <div class="options-container">
+                        <p>Para una experiencia óptima, recomendamos utilizar navegadores basados en Chromium 106 o
+                            versiones más
+                            recientes.</p>
+                        <br>
+                        <p>Algunas alternativas compatibles incluyen Firefox, Opera, Brave, Vivaldi y otros navegadores
+                            modernos.
+                        </p>
+                    </div>
+                    </details>
+                </div>
+            </div>
         </div>
 
-        <div class="detalles" id="chrome-box">
-          <div class="options-container">
-            <div class="option-title">Plataformas</div>
-            <button class="option" onclick="descargar('Google Chrome', '106.582', 'Dispositivo Android', 'Android 6.0', '115MB')">
-              <svg class="option-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="m23.35 12.653 2.496-4.323a.519.519 0 0 0-.897-.522l-.001.002-2.527 4.377c-1.887-.867-4.094-1.373-6.419-1.373s-4.532.506-6.517 1.413l.098-.04-2.527-4.378a.519.519 0 1 0-.898.521l-.001-.002 2.496 4.323c-4.286 2.367-7.236 6.697-7.643 11.744l-.003.052h29.991a14.76 14.76 0 0 0-7.57-11.758l-.076-.038zM9.098 20.176a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249m13.804 0a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249" />
-              </svg>
-              <span class="option-text">Dispositivo Android
-              </span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-2.71 2.875 2.56 2.265">
-                <path
-                  d="M-1.658 3.982a.8.8 0 0 0-.392-.09 1.4 1.4 0 0 0-.424.106l-.236.821c.179-.072.324-.101.445-.101.2 0 .339.077.471.165l.245-.837zm.251.168-.236.82s.276.17.484.17c.131 0 .288-.032.485-.113l.228-.796a1.3 1.3 0 0 1-.447.085.8.8 0 0 1-.514-.166m-.552-.458c.192.002.328.079.455.163l.241-.825v-.001s-.17-.102-.288-.132a1 1 0 0 0-.191-.022h-.003c-.12.002-.264.031-.441.104l-.233.820c.182-.074.329-.107.453-.107zm1.351-.387a.8.8 0 0 1-.506-.169l-.239.828.002.002a.9.9 0 0 0 .509.159c.136 0 .288-.031.454-.109v-.001l.002-.001.236-.813a1.1 1.1 0 0 1-.458.104" />
-              </svg>
-              <div class="option-text">Windows PC</div>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" viewBox="13 9 17 23" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#111"
-                  d="M22.258 25.522a15.7 15.7 0 0 1-7.5-1.516l.473-.75a15.26 15.26 0 0 0 7.027 1.3c0 .082.1-1.533.245-2.413H19.1a21.65 21.65 0 0 1 3.033-9.408h-10.2v15.526h10.716a22 22 0 0 1-.391-2.739" />
-                <path fill="#999"
-                  d="M23.285 24.5a10.7 10.7 0 0 0 4.484-1.3l.587.75a12.8 12.8 0 0 1-5.071 1.517 13.6 13.6 0 0 0 .441 2.8h7.337V12.739h-7.81a19.34 19.34 0 0 0-2.968 8.381h3.506a15.4 15.4 0 0 0-.506 3.375Zm-6.717-9.413h.995v2.299h-.995z" />
-                <path fill="#111" d="M24.851 15.087h.994v2.299h-.994z" />
-              </svg>
-              <span class="option-text">Mínimo macOS 10.13</span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12.9 2.9A4.7 4.7 0 0 1 16.35 1a4.6 4.6 0 0 1-1.15 3.5c-1.5 1.85-3.25 1.55-3.25 1.55s-.35-1.45.95-3.15m-.8 4.4c.75 0 2.15-1 3.95-1a4.85 4.85 0 0 1 4.3 2.2 4.75 4.75 0 0 0-2.4 4.15 4.9 4.9 0 0 0 3 4.5s-2.1 5.8-4.9 5.8c-1.25 0-2.25-.85-3.6-.85S9.7 23 8.8 23C6.25 23 3 17.45 3 13s2.75-6.65 5.3-6.65c1.65 0 2.95.95 3.8.95" />
-              </svg>
-              <span class="option-text">Mínimo iOS 14 <span class="iphone6s">iPhone 6s</span></span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Microsoft Edge -->
-      <div class="browser-card">
-        <div class="browser-header">
-          <svg class="browser-icon" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#0f5198"
-              d="M23.461 19.348a8 8 0 0 1-1.066.477 10.4 10.4 0 0 1-3.646.66c-4.804 0-8.989-3.301-8.989-7.546a3.18 3.18 0 0 1 1.666-2.773c-4.347.183-5.464 4.712-5.464 7.363 0 7.506 6.916 8.267 8.409 8.267.802 0 2.011-.234 2.742-.467l.132-.041a13 13 0 0 0 6.764-5.362.406.406 0 0 0-.122-.558.43.43 0 0 0-.426-.021" />
-            <path fill="#0a82d8"
-              d="M10.735 24.517a8.1 8.1 0 0 1-2.306-2.163 8.2 8.2 0 0 1 2.996-12.188c.315-.152.853-.416 1.575-.407a3.31 3.31 0 0 1 2.610 1.321c.407.548.64 1.208.65 1.899 0-.021 2.489-8.084-8.126-8.084-4.458 0-8.126 4.235-8.126 7.942a13.2 13.2 0 0 0 1.229 5.688 13.007 13.007 0 0 0 15.884 6.815 7.7 7.7 0 0 1-6.389-.823" />
-            <path fill="#2ec2dc"
-              d="M15.468 15.123c-.081.102-.335.254-.335.579 0 .264.173.518.477.731 1.462 1.016 4.215.884 4.226.884a6.06 6.06 0 0 0 3.077-.843 6.23 6.23 0 0 0 3.088-5.373c.30-2.276-.812-3.789-1.148-4.458C22.699 2.427 18.048 0 13 0 5.891 0 .102 5.708 0 12.817.051 9.11 3.738 6.114 8.126 6.114c.356 0 2.387.03 4.266 1.025 1.656.874 2.529 1.92 3.128 2.966.629 1.087.742 2.448.742 2.996 0 .539-.275 1.351-.792 2.021" />
-          </svg>
-          <div>
-            <div class="browser-name">Microsoft Edge</div>
-            <div class="browser-version">Versión 106</div>
-          </div>
-          <button class="btn-obtener" id="obtener-edge" onclick='expandir("edge")'>Obtener</button>
+        <div class="unsupported-note">
+            <p> Para asegurar un rendimiento adecuado y mantener la seguridad del sistema, es necesario utilizar las
+                versiones mínimas indicadas. Versiones anteriores pueden ocasionar fallos críticos de funcionamiento,
+                problemas visuales o incluso impedir la carga correcta del sitio. <br><a id="redirigir" href=""
+                    class="carga-forzada">Continuar de todas formas</a></p>
         </div>
 
-        <div class="detalles" id="edge-box">
-          <div class="options-container">
-            <div class="option-title">Sistema operativo mínimo</div>
-            <button class="option">
-              <svg class="option-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="m23.35 12.653 2.496-4.323a.519.519 0 0 0-.897-.522l-.001.002-2.527 4.377c-1.887-.867-4.094-1.373-6.419-1.373s-4.532.506-6.517 1.413l.098-.04-2.527-4.378a.519.519 0 1 0-.898.521l-.001-.002 2.496 4.323c-4.286 2.367-7.236 6.697-7.643 11.744l-.003.052h29.991a14.76 14.76 0 0 0-7.57-11.758l-.076-.038zM9.098 20.176a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249m13.804 0a1.249 1.249 0 1 1 1.249-1.249 1.25 1.25 0 0 1-1.249 1.249" />
-              </svg>
-              <span class="option-text">Android 8.0</span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-2.71 2.875 2.56 2.265">
-                <path
-                  d="M-1.658 3.982a.8.8 0 0 0-.392-.09 1.4 1.4 0 0 0-.424.106l-.236.821c.179-.072.324-.101.445-.101.2 0 .339.077.471.165l.245-.837zm.251.168-.236.82s.276.17.484.17c.131 0 .288-.032.485-.113l.228-.796a1.3 1.3 0 0 1-.447.085.8.8 0 0 1-.514-.166m-.552-.458c.192.002.328.079.455.163l.241-.825v-.001s-.17-.102-.288-.132a1 1 0 0 0-.191-.022h-.003c-.12.002-.264.031-.441.104l-.233.820c.182-.074.329-.107.453-.107zm1.351-.387a.8.8 0 0 1-.506-.169l-.239.828.002.002a.9.9 0 0 0 .509.159c.136 0 .288-.031.454-.109v-.001l.002-.001.236-.813a1.1 1.1 0 0 1-.458.104" />
-              </svg>
-              <span class="option-text">Windows 10</span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" viewBox="13 9 17 23" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#111"
-                  d="M22.258 25.522a15.7 15.7 0 0 1-7.5-1.516l.473-.75a15.26 15.26 0 0 0 7.027 1.3c0 .082.1-1.533.245-2.413H19.1a21.65 21.65 0 0 1 3.033-9.408h-10.2v15.526h10.716a22 22 0 0 1-.391-2.739" />
-                <path fill="#999"
-                  d="M23.285 24.5a10.7 10.7 0 0 0 4.484-1.3l.587.75a12.8 12.8 0 0 1-5.071 1.517 13.6 13.6 0 0 0 .441 2.8h7.337V12.739h-7.81a19.34 19.34 0 0 0-2.968 8.381h3.506a15.4 15.4 0 0 0-.506 3.375Zm-6.717-9.413h.995v2.299h-.995z" />
-                <path fill="#111" d="M24.851 15.087h.994v2.299h-.994z" />
-              </svg>
-              <span class="option-text">macOS 10.15</span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12.9 2.9A4.7 4.7 0 0 1 16.35 1a4.6 4.6 0 0 1-1.15 3.5c-1.5 1.85-3.25 1.55-3.25 1.55s-.35-1.45.95-3.15m-.8 4.4c.75 0 2.15-1 3.95-1a4.85 4.85 0 0 1 4.3 2.2 4.75 4.75 0 0 0-2.4 4.15 4.9 4.9 0 0 0 3 4.5s-2.1 5.8-4.9 5.8c-1.25 0-2.25-.85-3.6-.85S9.7 23 8.8 23C6.25 23 3 17.45 3 13s2.75-6.65 5.3-6.65c1.65 0 2.95.95 3.8.95" />
-              </svg>
-              <span class="option-text">iOS 15 <span class="iphone6s">iPhone 6s</span></span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Safari -->
-      <div class="browser-card">
-        <div class="browser-header">
-
-          <svg class="browser-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <g fill="none" transform="matrix(4 0 0 4 256 256)">
-              <circle r="62" fill="#1d94f6" />
-              <circle r="50" stroke="#fff" stroke-dasharray="2 7" stroke-width="10" />
-            </g>
-            <path d="m280 280-48-48-116 156" fill="#fff" />
-            <path d="m280 280-48-48 164-112" fill="#ff3c30" />
-          </svg>
-
-          <div>
-            <div class="browser-name">Safari</div>
-            <div class="browser-version">Versión 14</div>
-          </div>
-          <button class="btn-obtener" id="obtener-safari" onclick='expandir("safari")'>Obtener</button>
-        </div>
-
-        <div class="detalles" id="safari-box">
-          <div class="options-container">
-            <div class="option-title">Sistema operativo mínimo</div>
-            <button class="option">
-              <svg class="option-icon" viewBox="13 9 17 23" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#111"
-                  d="M22.258 25.522a15.7 15.7 0 0 1-7.5-1.516l.473-.75a15.26 15.26 0 0 0 7.027 1.3c0 .082.1-1.533.245-2.413H19.1a21.65 21.65 0 0 1 3.033-9.408h-10.2v15.526h10.716a22 22 0 0 1-.391-2.739" />
-                <path fill="#999"
-                  d="M23.285 24.5a10.7 10.7 0 0 0 4.484-1.3l.587.75a12.8 12.8 0 0 1-5.071 1.517 13.6 13.6 0 0 0 .441 2.8h7.337V12.739h-7.81a19.34 19.34 0 0 0-2.968 8.381h3.506a15.4 15.4 0 0 0-.506 3.375Zm-6.717-9.413h.995v2.299h-.995z" />
-                <path fill="#111" d="M24.851 15.087h.994v2.299h-.994z" />
-              </svg>
-              <span class="option-text">macOS 10.15</span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-
-            <button class="option">
-              <svg class="option-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12.9 2.9A4.7 4.7 0 0 1 16.35 1a4.6 4.6 0 0 1-1.15 3.5c-1.5 1.85-3.25 1.55-3.25 1.55s-.35-1.45.95-3.15m-.8 4.4c.75 0 2.15-1 3.95-1a4.85 4.85 0 0 1 4.3 2.2 4.75 4.75 0 0 0-2.4 4.15 4.9 4.9 0 0 0 3 4.5s-2.1 5.8-4.9 5.8c-1.25 0-2.25-.85-3.6-.85S9.7 23 8.8 23C6.25 23 3 17.45 3 13s2.75-6.65 5.3-6.65c1.65 0 2.95.95 3.8.95" />
-              </svg>
-              <span class="option-text">iOS 14 (iPhone 6s)</span>
-              <svg class="download-icon" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.75 10v2.5a1.25 1.25 0 0 1-1.25 1.25h-10a1.25 1.25 0 0 1-1.25-1.25V10H2.5v2.5h10V10zM8.125 7.866l2.058-2.058.884.884L7.5 10.259 3.933 6.692l.884-.884 2.058 2.058V1.25h1.25z" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Otros navegadores -->
-      <div class="browser-card">
-        <div class="browser-header">
-          <svg class="browser-icon2" fill="#987fff" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"
-            viewBox="6 -2 60 60">
-            <path
-              d="m59 12-1 1h-4l-1 2h-1l-4-3v-2l-1-2-2-2h-3v1l3 2 1 2-2 1-1-1h-1V9l-3-1v3l-3 1 1 2h3v-3l3 1 1 1h2l1 2 3 3v2l-3-1-4 3-4 4v1h-1l-3-1-2 1 1 3 1-1h1v2h2l1 2 2-1h3l3 1h1l3 3 5 3-4 6-3 2-1 3-5 3v2a28 28 0 0 0 16-43" />
-            <path
-              d="m39 43-2-4 2-4-2-1-2-2-5-1-1-3v2h-1l-4-6v-4l-3-5-4 1h-4l-1-1 2-2-2 1a28 28 0 0 0 24 42 29 29 0 0 0 4 0l-1-4 2-5zM18 9l5-1 3-1 2 1h4l2-3 2 1 5-1 1-1 2-2 3 1h1a28 28 0 0 0-34 7Zm19-6 3-2 2 1-3 2-2 1-1-1Zm-8 0 1 1 2-1 1 2-4 1-2-1z" />
-          </svg>
-          <svg class="browser-icon2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" fill="#80e" r="24" />
-            <path
-              d="M50 42c-14-7-11-8-16-11q-1.5-6 0-12-7.5 3-12 9c-1-4-1.4-7-1-12C8 24 2 38 2 50c0 31 26 49 48 49s48-16 48-49c0-5 0-9-3-16-9 21-23 40-45 40-8 0-23-4-23-25 7-2 16-3 23-7"
-              fill="#f73" />
-            <path
-              d="M50 42c-17 6-20-8-35 0 3 6 7 7 11 7 0 20 12 26 24 26 19 0 37-9 45-41-7-17-23-19-29-34-9 6-15 14-16 26 12 0 24 10 24 24 0 15-14 23-24 23-5 0-19-2-21-17 2-6 8-8 16-9 3-1 4-3 5-5"
-              fill="#fc3" />
-          </svg>
-          <svg class="browser-icon" viewBox="0 0 1090 1090" xmlns="http://www.w3.org/2000/svg">
-            <linearGradient id="a" x1="461" x2="461" y1="59" y2="1033" gradientUnits="userSpaceOnUse">
-              <stop offset=".6" stop-color="#ff1b2d" />
-              <stop offset="1" stop-color="#a70014" />
-            </linearGradient>
-            <linearGradient id="b" x1="714" x2="714" y1="116" y2="978" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#9c0000" />
-              <stop offset=".7" stop-color="#ff4b4b" />
-            </linearGradient>
-            <path fill="url(#a)"
-              d="M545 42.5a502.5 502.5 0 1 0 334.9 877.1 362.4 362.4 0 0 1-201.4 61.5c-119.7 0-226.8-59.4-299-153-55.6-65.6-91.5-162.5-94-271.3V533c2.5-108.8 38.4-205.8 94-271.3 72-93.6 179.3-153 299-153 73.6 0 142.5 22.5 201.4 61.6a500.8 500.8 0 0 0-333-127.9h-2z" />
-            <path fill="url(#b)"
-              d="M379.6 261.8c46-54.4 105.7-87.3 170.7-87.3 146.3 0 265 166 265 370.4 0 204.6-118.6 370.4-265 370.4-65 0-124.6-32.8-170.7-87.2 72 93.6 179.2 153 299 153A363 363 0 0 0 880 919.6 501 501 0 0 0 1047.5 545a501.1 501.1 0 0 0-167.6-374.6 362.4 362.4 0 0 0-201.4-61.5c-119.7 0-226.8 59.4-299 153" />
-          </svg>
-
-          <div>
-            <div class="browser-name">Otros</div>
-            <div class="browser-version">Versión > 2022</div>
-          </div>
-          <button class="btn-obtener" id="obtener-otros" onclick='expandir("otros")'>Detalles</button>
-        </div>
-
-        <div class="detalles" id="otros-box">
-          <div class="options-container">
-            <p>Para una experiencia óptima, recomendamos utilizar navegadores basados en Chromium 106 o versiones más
-              recientes.</p>
-            <br>
-            <p>Algunas alternativas compatibles incluyen Firefox, Opera, Brave, Vivaldi y otros navegadores modernos.
-            </p>
-          </div>
-          </details>
-        </div>
-      </div>
     </div>
 
-    <div class="unsupported-note">
-      <p> Para asegurar un rendimiento adecuado y mantener la seguridad del sistema, es necesario utilizar las versiones mínimas indicadas. Versiones anteriores pueden ocasionar fallos críticos de funcionamiento, problemas visuales o incluso impedir la carga correcta del sitio. <br><a id="redirigir" href="" class="carga-forzada">Continuar de todas formas</a></p>
-    </div>
+    <div id="install">
+        <div class="install-header">
+            <div id="install-browser">Google Chrome</div>
+            <button onclick="hideDescargar()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 26">
+                    <path d="M30 15H8l8 8-3 3L0 13 13 0l3 3-8 8h22z" />
+                </svg>
+                Volver
+            </button>
+        </div>
 
-  </div>
+        <div class="install-main">
+            <div class="info-app">
+                <h3>Información de la aplicación</h3>
+                <div class="info-app-box">
+                    <div class="install-infoBox">
+                        <div class="label">Versión</div>
+                        <div id="version-browser">106.584</div>
+                    </div>
+                    <div class="install-infoBox">
+                        <div class="label">Plataforma</div>
+                        <div id="install-device">Dispositivo Android</div>
+                    </div>
+                    <div class="install-infoBox">
+                        <div class="label">OS mínimo</div>
+                        <div id="install-OS">Android 6.0</div>
+                    </div>
+                    <div class="install-infoBox">
+                        <div class="label">Tamaño</div>
+                        <div id="install-size">43.2MB</div>
+                    </div>
+                </div>
+            </div>
 
-  <div id="install">
-    
-    <label for="">Navegador</label>
-    <div id="install-browser">Google Chrome</div>
-    <label for="">Versión</label>
-    <div id="version-browser">106.584</div>
-    <label for="">Plataforma</label>
-    <div id="install-device">Dispositivo Android</div>
-    <label for="">OS mínimo requerido</label>
-    <div id="install-OS">Android 6.0</div>
-    <label for="">Tamaño de Archvio</label>
-    <div id="install-size">43.2MB</div>
-    <div class="botones-install" style="margin-bottom: 0rem;">
-      <button onclick="hideDescargar()" style="margin-right: 1rem; width: 80px; background-color: #777;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><path d="M48.6 23H15.4c-.9 0-1.3-1.1-.7-1.7l9.6-9.6c.6-.6.6-1.5 0-2.1l-2.2-2.2c-.6-.6-1.5-.6-2.1 0L2.5 25c-.6.6-.6 1.5 0 2.1L20 44.6c.6.6 1.5.6 2.1 0l2.1-2.1c.6-.6.6-1.5 0-2.1l-9.6-9.6c-.6-.7-.2-1.8.7-1.8h33.2c.8 0 1.5-.6 1.5-1.4v-3c0-.8-.6-1.6-1.4-1.6"/></svg></button>
-      <a onclick="showDescargaMensjae()" href="/download/GoogleChrome106.apk">Descargar Google Chrome.apk</a> 
+            <div class="bajar-app">
+                <div class="plecas">
+                    <p>No cierre el navegador mientras la descarga esta en proceso</p>
+                    <p>Si la descarga no inicia, verifique su conexión a internet</p>
+                    <p>Si presenta problemas contacte a soporte</p>
+                    <p id="descargaMensaje">La descarga debería comenzar pronto...</p>
+                </div>
+                <a class="btn-descargar-app" onclick="showDescargaMensjae()" href="/download/GoogleChrome106.apk">
+                    Descargar Google Chrome.apk
+                </a>
+            </div>
+
+        </div>
+
+        <div class="install-fotter">
+        </div>
+
+
+
     </div>
-    <div id="descargaMensaje">La descarga debería comenzar pronto...<br>Si presenta problemas contacte a soporte</div>
-  </div>
 
 
 </body>
 
 <script>
-  var descargaMensaje = document.getElementById("descargaMensaje");
-  function showDescargaMensjae() {
-    descargaMensaje.style.display = "block";
-  }
-
-
-
-  var install = document.getElementById("install");
-  var container = document.getElementById("container");
-
-  var installBrowser = document.getElementById("install-browser");
-  var versionBrowser = document.getElementById("version-browser");
-  var installDevice = document.getElementById("install-device");
-  var installOS = document.getElementById("install-OS");
-  var installSize = document.getElementById("install-size");
-
-  function descargar(navegador, version, device, os, size) {
-    installBrowser.textContent = navegador ;
-    versionBrowser.textContent = version ;
-    installDevice.textContent = device;
-    installOS.textContent = os;
-    installSize.textContent = size;
-
-    container.style.display = "none";
-    install.style.display = "block";
-  }
-
-  function hideDescargar() {
-    container.style.display = "block";
-    install.style.display = "none";
-  }
-
-
-  var redirigir = document.getElementById("redirigir");
-
-  function getCookie(nombre) {
-      var valor = "; " + document.cookie;
-      var partes = valor.split("; " + nombre + "=");
-      if (partes.length === 2) return partes.pop().split(";").shift();
-  }
-
-  var urlGuardada = "";
-
-  try { urlGuardada = decodeURIComponent(getCookie("navegadorobsoleto") || ""); } catch(e) { urlGuardada = ""; }
-
-  if (urlGuardada) { redirigir.href = urlGuardada + "?forzado"; } else { redirigir.style.display = "none"; }
-
-  var chromeBox = document.getElementById("chrome-box");
-  var obtenerChrome = document.getElementById("obtener-chrome");
-
-  var edgeBox = document.getElementById("edge-box");
-  var obtenerEdge = document.getElementById("obtener-edge");
-
-  var safariBox = document.getElementById("safari-box");
-  var obtenerSafari = document.getElementById("obtener-safari");
-
-  var otrosBox = document.getElementById("otros-box");
-  var obtenerOtros = document.getElementById("obtener-otros");
-
-  function expandir(box) {
-    if (box === "chrome") {
-      chromeBox.style.display = "block";
-      obtenerChrome.style.display = "none";
+    var descargaMensaje = document.getElementById("descargaMensaje");
+    function showDescargaMensjae() {
+        descargaMensaje.style.display = "block";
     }
-    if (box === "edge") {
-      edgeBox.style.display = "block";
-      obtenerEdge.style.display = "none";
+
+
+
+    var install = document.getElementById("install");
+    var container = document.getElementById("container");
+
+    var installBrowser = document.getElementById("install-browser");
+    var versionBrowser = document.getElementById("version-browser");
+    var installDevice = document.getElementById("install-device");
+    var installOS = document.getElementById("install-OS");
+    var installSize = document.getElementById("install-size");
+
+    function descargar(navegador, version, device, os, size) {
+        installBrowser.textContent = navegador;
+        versionBrowser.textContent = version;
+        installDevice.textContent = device;
+        installOS.textContent = os;
+        installSize.textContent = size;
+
+        container.style.display = "none";
+        install.style.display = "block";
     }
-    if (box === "safari") {
-      safariBox.style.display = "block";
-      obtenerSafari.style.display = "none";
+
+    function hideDescargar() {
+        container.style.display = "block";
+        install.style.display = "none";
     }
-    if (box === "otros") {
-      otrosBox.style.display = "block";
-      obtenerOtros.style.display = "none";
+
+
+    var redirigir = document.getElementById("redirigir");
+
+    function getCookie(nombre) {
+        var valor = "; " + document.cookie;
+        var partes = valor.split("; " + nombre + "=");
+        if (partes.length === 2) return partes.pop().split(";").shift();
     }
-  }
+
+    var urlGuardada = "";
+
+    try { urlGuardada = decodeURIComponent(getCookie("navegadorobsoleto") || ""); } catch (e) { urlGuardada = ""; }
+
+    if (urlGuardada) { redirigir.href = urlGuardada + "?forzado"; } else { redirigir.style.display = "none"; }
+
+    var chromeBox = document.getElementById("chrome-box");
+    var obtenerChrome = document.getElementById("obtener-chrome");
+
+    var edgeBox = document.getElementById("edge-box");
+    var obtenerEdge = document.getElementById("obtener-edge");
+
+    var safariBox = document.getElementById("safari-box");
+    var obtenerSafari = document.getElementById("obtener-safari");
+
+    var otrosBox = document.getElementById("otros-box");
+    var obtenerOtros = document.getElementById("obtener-otros");
+
+    function expandir(box) {
+        if (box === "chrome") {
+            chromeBox.style.display = "block";
+            obtenerChrome.style.display = "none";
+        }
+        if (box === "edge") {
+            edgeBox.style.display = "block";
+            obtenerEdge.style.display = "none";
+        }
+        if (box === "safari") {
+            safariBox.style.display = "block";
+            obtenerSafari.style.display = "none";
+        }
+        if (box === "otros") {
+            otrosBox.style.display = "block";
+            obtenerOtros.style.display = "none";
+        }
+    }
 
 
 </script>
 
-</html>
+</html>1
