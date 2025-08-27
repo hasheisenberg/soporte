@@ -31,10 +31,11 @@
         #container {
             max-width: 660px;
             width: 100%;
-            display: none;
+            
         }
 
         #install {
+            display: none;
             margin: 2rem;
             max-width: 750px;
             background-color: #fff;
@@ -410,6 +411,10 @@ border: 1px solid #ccc;
 
         #descargaMensaje {
             display: none;
+            color: #999;
+            font-size: 0.9rem;
+            text-align: center;
+            width: 100%;
         }
 
         .btn-obtener:hover {
@@ -757,11 +762,13 @@ border: 1px solid #ccc;
                     <p>No cierre el navegador mientras la descarga esta en proceso</p>
                     <p>Si la descarga no inicia, verifique su conexión a internet</p>
                     <p>Si presenta problemas contacte a soporte</p>
-                    <p id="descargaMensaje">La descarga debería comenzar pronto...</p>
+                    
                 </div>
                 <a class="btn-descargar-app" onclick="showDescargaMensjae()" href="/download/GoogleChrome106.apk">
                     Descargar Google Chrome.apk
+                <div id="descargaMensaje">La descarga debería comenzar en cualquier momento</div>
                 </a>
+                
             </div>
 
         </div>
