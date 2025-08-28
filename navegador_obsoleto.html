@@ -177,6 +177,12 @@
             margin: 0px 15px;
             margin-bottom: 15px;
         }
+        #plecas-ios {
+           display: none;
+        }
+        #plecas-normal {
+            
+        }
 
         .plecas p {
             font-size: 0.9rem;
@@ -283,7 +289,13 @@
             margin-top: 1rem;
         }
 
-
+        #install-size::after {
+            content: "MB";
+            color: #999;
+            font-weight: normal;
+            margin-left: 2px;
+            font-size: 0.7rem;
+        }
         .option {
             display: -webkit-flex;
             display: flex;
@@ -345,7 +357,12 @@
             font-weight: bold;
             font-size: 0.9rem;
         }
-
+        
+        button:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+        }
+        
         .option2 {
             color: #777;
             font-weight: normal;
@@ -356,7 +373,12 @@
             margin-top: 15px;
             display: none;
         }
-
+        
+        .disable {
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
         .btn-obtener {
             margin-left: auto;
             padding: 5px 10px;
@@ -423,28 +445,28 @@
                     <button class="btn-obtener" id="obtener-chrome" onclick='expandir("chrome")'>Obtener</button>
                 </div>
                 <div class="detalles" id="chrome-box">
-                    <button class="option" onclick="descargar('Google Chrome', '106.582', 'Dispositivo Android', 'Android 6.0', '115MB')">
+                    <button class="option" onclick="descargar('android','Google Chrome', '106', 'Dispositivos Android', 'Android 6.0', '114.82', '/download/GoogleChrome106.apk', 'Descargar Google Chrome 106.apk', 'La descarga debería comenzar en cualquier momento' )">
                         <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 28.64"><path d="M37.39 8.94c1.05-1.9 3.88-7 4.04-7.28C42.16.4 40.17-.7 39.48.57c-.03.07-2.99 5.35-4.08 7.34-6.12-3-14.68-3-20.8 0-1.05-1.9-3.79-6.8-4.08-7.34-.29-.53-.96-.72-1.48-.45-.57.28-.78.98-.47 1.54.12.22 2.97 5.36 4.04 7.28C5.42 13.08.67 20.64 0 28.64h50c-.67-8-5.42-15.56-12.61-19.7M14 21.64c-2.59.03-2.59-4.03 0-4 2.59-.03 2.59 4.03 0 4m22 0c-2.59.03-2.59-4.03 0-4 2.59-.03 2.59 4.03 0 4"/></svg>
                         <div class="option-text">Android</div>
                         <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 41"><path d="M34 17 21 30 8 17l3-3 8 8V0h4v22l8-8zm8 8v9c0 3.87-3.14 7-7 7H7c-3.87 0-7-3.14-7-7v-9h4v9c0 1.66 1.34 3 3 3h28c1.66 0 3-1.34 3-3v-9z"/></svg>
-                     </button>
-                    <button class="option">
+                    </button>
+                    <button class="option" onclick="descargar('window', 'Google Chrome', '106', 'PC Windows', 'Window 7', '84.6', '/download/GoogleChrome106.exe', 'Descargar Google Chrome 106.exe', 'La descarga debería comenzar en cualquier momento' )">
                         <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 50 50"><path d="M18 3.43V20H0V6zM42 0v20H20V3.14zm0 22v20l-22-3.14V22zm-24 0v16.57L0 36V22z"/></svg>
                         <div class="option-text">Windows</div>
                         <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 41"><path d="M34 17 21 30 8 17l3-3 8 8V0h4v22l8-8zm8 8v9c0 3.87-3.14 7-7 7H7c-3.87 0-7-3.14-7-7v-9h4v9c0 1.66 1.34 3 3 3h28c1.66 0 3-1.34 3-3v-9z"/></svg>
                     </button>
-                    <button class="option">
+                    <button class="option" onclick="descargar('macos', 'Google Chrome', '106', 'macOS', 'MacOS 10.13', '194', '/download/GoogleChrome106.dmg', 'Descargar Google Chrome 106.dmg', 'La descarga debería comenzar en cualquier momento' )">
                         <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 58 50"><path d="m7 30 2-2s7.3 4.17 18.14 3.47c.14-3.96.87-6.48.87-6.48H19C19 11 27 0 27 0H0v41h28c-.56-2.54-.81-4.92-.87-7.03C15.74 34.37 7 30 7 30m5-24h3v7h-3z"/><path fill="#999" d="M50 0v41H31c-.9-2.1-1.26-4.65-1.31-7.19 4.25-.42 8.78-1.54 13.31-3.81l-2-2.03c-4 1.78-7.8 2.78-11.29 3.24C29.93 26.27 31 22 31 22h-9c1-11 8-22 8-22z"/><path d="M34 6h3v7h-3z"/></svg>
                         <div class="option-text">macOS</div>
                         <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 41"><path d="M34 17 21 30 8 17l3-3 8 8V0h4v22l8-8zm8 8v9c0 3.87-3.14 7-7 7H7c-3.87 0-7-3.14-7-7v-9h4v9c0 1.66 1.34 3 3 3h28c1.66 0 3-1.34 3-3v-9z"/></svg>
                     </button>
-                    <button class="option" onclick="descargar('Google Chrome', '106.582', 'iOS, iPhone, iPad', 'iOS 14, iPhone 6s', '115MB')">
+                    <button class="option" onclick="descargar('ios','Google Chrome', '-', 'iOS, iPhone, iPad', 'iOS 14, iPhone 6s', '-', appStoreChrome, 'Abrir App Store', 'Redirigiendo a la App Store')">
                         <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 42 55"><path d="M20.25 3.89A9.6 9.6 0 0 1 27.31 0c.25 2.61-.61 5.2-2.35 7.16-3.07 3.78-6.65 3.17-6.65 3.17s-.72-2.97 1.94-6.44m-1.64 9c1.53 0 4.4-2.05 8.08-2.05a9.93 9.93 0 0 1 8.8 4.5 9.71 9.71 0 0 0-4.91 8.49 10 10 0 0 0 6.14 9.2s-4.3 11.86-10.02 11.86c-2.56 0-4.6-1.74-7.36-1.74s-5.63 1.84-7.47 1.84C6.65 45 0 33.65 0 24.55s5.63-13.61 10.84-13.61c3.37 0 6.03 1.94 7.77 1.94"/></svg>
                         <div class="option-text">iOS</div>
                         <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 41"><path d="M34 17 21 30 8 17l3-3 8 8V0h4v22l8-8zm8 8v9c0 3.87-3.14 7-7 7H7c-3.87 0-7-3.14-7-7v-9h4v9c0 1.66 1.34 3 3 3h28c1.66 0 3-1.34 3-3v-9z"/></svg>
                     </button>
                 </div>
-            </div>
+            </div> 
 
             <div class="browser-card">
                 <div class="browser-header">
@@ -457,22 +479,22 @@
                 </div>
 
                 <div class="detalles" id="edge-box">
-                    <button class="option" onclick="descargar('Google Chrome', '106.582', 'Dispositivo Android', 'Android 6.0', '115MB')">
+                    <button class="option" onclick="descargar('android','Microsoft Edge', '108', 'Dispositivos Android', 'Android 6.0', '106', '/download/MicrosoftEdge108.apk', 'Descargar Microsoft Edge 108.apk', 'La descarga debería comenzar en cualquier momento' )">
                         <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 28.64"><path d="M37.39 8.94c1.05-1.9 3.88-7 4.04-7.28C42.16.4 40.17-.7 39.48.57c-.03.07-2.99 5.35-4.08 7.34-6.12-3-14.68-3-20.8 0-1.05-1.9-3.79-6.8-4.08-7.34-.29-.53-.96-.72-1.48-.45-.57.28-.78.98-.47 1.54.12.22 2.97 5.36 4.04 7.28C5.42 13.08.67 20.64 0 28.64h50c-.67-8-5.42-15.56-12.61-19.7M14 21.64c-2.59.03-2.59-4.03 0-4 2.59-.03 2.59 4.03 0 4m22 0c-2.59.03-2.59-4.03 0-4 2.59-.03 2.59 4.03 0 4"/></svg>
                         <div class="option-text">Android</div>
                         <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 41"><path d="M34 17 21 30 8 17l3-3 8 8V0h4v22l8-8zm8 8v9c0 3.87-3.14 7-7 7H7c-3.87 0-7-3.14-7-7v-9h4v9c0 1.66 1.34 3 3 3h28c1.66 0 3-1.34 3-3v-9z"/></svg>
-                     </button>
-                    <button class="option">
+                    </button>
+                    <button class="option" onclick="descargar('window', 'Microsoft Edge', '106', 'PC Windows', 'Window 7', '132', '/download/MicrosoftEdge106.msi', 'Microsoft Edge 106.msi', 'La descarga debería comenzar en cualquier momento' )">
                         <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 50 50"><path d="M18 3.43V20H0V6zM42 0v20H20V3.14zm0 22v20l-22-3.14V22zm-24 0v16.57L0 36V22z"/></svg>
                         <div class="option-text">Windows</div>
                         <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 41"><path d="M34 17 21 30 8 17l3-3 8 8V0h4v22l8-8zm8 8v9c0 3.87-3.14 7-7 7H7c-3.87 0-7-3.14-7-7v-9h4v9c0 1.66 1.34 3 3 3h28c1.66 0 3-1.34 3-3v-9z"/></svg>
                     </button>
-                    <button class="option">
+                    <button class="option" onclick="descargar('macos', 'Microsoft Edge', '108', 'macOS', 'MacOS 10.14', '202.92', '/download/MicrosoftEdge108.pkg', 'Microsoft Edge Chrome 106.pkg', 'La descarga debería comenzar en cualquier momento' )">
                         <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 58 50"><path d="m7 30 2-2s7.3 4.17 18.14 3.47c.14-3.96.87-6.48.87-6.48H19C19 11 27 0 27 0H0v41h28c-.56-2.54-.81-4.92-.87-7.03C15.74 34.37 7 30 7 30m5-24h3v7h-3z"/><path fill="#999" d="M50 0v41H31c-.9-2.1-1.26-4.65-1.31-7.19 4.25-.42 8.78-1.54 13.31-3.81l-2-2.03c-4 1.78-7.8 2.78-11.29 3.24C29.93 26.27 31 22 31 22h-9c1-11 8-22 8-22z"/><path d="M34 6h3v7h-3z"/></svg>
                         <div class="option-text">macOS</div>
                         <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 41"><path d="M34 17 21 30 8 17l3-3 8 8V0h4v22l8-8zm8 8v9c0 3.87-3.14 7-7 7H7c-3.87 0-7-3.14-7-7v-9h4v9c0 1.66 1.34 3 3 3h28c1.66 0 3-1.34 3-3v-9z"/></svg>
                     </button>
-                    <button class="option" onclick="descargar('Google Chrome', '106.582', 'iOS, iPhone, iPad', 'iOS 14, iPhone 6s', '115MB')">
+                    <button class="option" onclick="descargar('ios','Microsoft Edge', '- ', 'iOS, iPhone, iPad', 'iOS 14, iPhone 6s', '- ', appStoreEdge, 'Abrir App Store', 'Redirigiendo a la App Store')">
                         <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 42 55"><path d="M20.25 3.89A9.6 9.6 0 0 1 27.31 0c.25 2.61-.61 5.2-2.35 7.16-3.07 3.78-6.65 3.17-6.65 3.17s-.72-2.97 1.94-6.44m-1.64 9c1.53 0 4.4-2.05 8.08-2.05a9.93 9.93 0 0 1 8.8 4.5 9.71 9.71 0 0 0-4.91 8.49 10 10 0 0 0 6.14 9.2s-4.3 11.86-10.02 11.86c-2.56 0-4.6-1.74-7.36-1.74s-5.63 1.84-7.47 1.84C6.65 45 0 33.65 0 24.55s5.63-13.61 10.84-13.61c3.37 0 6.03 1.94 7.77 1.94"/></svg>
                         <div class="option-text">iOS</div>
                         <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 41"><path d="M34 17 21 30 8 17l3-3 8 8V0h4v22l8-8zm8 8v9c0 3.87-3.14 7-7 7H7c-3.87 0-7-3.14-7-7v-9h4v9c0 1.66 1.34 3 3 3h28c1.66 0 3-1.34 3-3v-9z"/></svg>
@@ -491,12 +513,12 @@
                 </div>
 
                 <div class="detalles" id="safari-box">
-                    <button class="option">
+                    <button class="option" onclick="descargar('macos2', 'Safari', '- ', 'macOS', 'MacOS 10.14', '- ', appStoreSafari, 'App No Disponible', 'La descarga debería comenzar en cualquier momento' )">
                         <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 58 50"><path d="m7 30 2-2s7.3 4.17 18.14 3.47c.14-3.96.87-6.48.87-6.48H19C19 11 27 0 27 0H0v41h28c-.56-2.54-.81-4.92-.87-7.03C15.74 34.37 7 30 7 30m5-24h3v7h-3z"/><path fill="#999" d="M50 0v41H31c-.9-2.1-1.26-4.65-1.31-7.19 4.25-.42 8.78-1.54 13.31-3.81l-2-2.03c-4 1.78-7.8 2.78-11.29 3.24C29.93 26.27 31 22 31 22h-9c1-11 8-22 8-22z"/><path d="M34 6h3v7h-3z"/></svg>
                         <div class="option-text">macOS</div>
                         <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 41"><path d="M34 17 21 30 8 17l3-3 8 8V0h4v22l8-8zm8 8v9c0 3.87-3.14 7-7 7H7c-3.87 0-7-3.14-7-7v-9h4v9c0 1.66 1.34 3 3 3h28c1.66 0 3-1.34 3-3v-9z"/></svg>
                     </button>
-                    <button class="option" onclick="descargar('Google Chrome', '106.582', 'iOS, iPhone, iPad', 'iOS 14, iPhone 6s', '115MB')">
+                    <button class="option" onclick="descargar('ios2','Safari', '- ', 'iOS, iPhone, iPad', 'iOS 14, iPhone 6s', '- ', appStoreSafari, 'App No Disponible', 'Redirigiendo a la App Store')">
                         <svg class="option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 42 55"><path d="M20.25 3.89A9.6 9.6 0 0 1 27.31 0c.25 2.61-.61 5.2-2.35 7.16-3.07 3.78-6.65 3.17-6.65 3.17s-.72-2.97 1.94-6.44m-1.64 9c1.53 0 4.4-2.05 8.08-2.05a9.93 9.93 0 0 1 8.8 4.5 9.71 9.71 0 0 0-4.91 8.49 10 10 0 0 0 6.14 9.2s-4.3 11.86-10.02 11.86c-2.56 0-4.6-1.74-7.36-1.74s-5.63 1.84-7.47 1.84C6.65 45 0 33.65 0 24.55s5.63-13.61 10.84-13.61c3.37 0 6.03 1.94 7.77 1.94"/></svg>
                         <div class="option-text">iOS</div>
                         <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 41"><path d="M34 17 21 30 8 17l3-3 8 8V0h4v22l8-8zm8 8v9c0 3.87-3.14 7-7 7H7c-3.87 0-7-3.14-7-7v-9h4v9c0 1.66 1.34 3 3 3h28c1.66 0 3-1.34 3-3v-9z"/></svg>
@@ -526,24 +548,16 @@
                 </div>
             </div>
         </div>
-
-        <div class="unsupported-note">
-            <p>
-                El uso del sistema en versiones anteriores puede generar errores graves de funcionamiento, seguridad o visualización, e incluso impedir la carga del sitio.
-                <a id="redirigir" href="" class="carga-forzada">Continuar de todas formas</a>
-            </p>
-        </div>
+        <p class="unsupported-note">El uso del sistema en versiones anteriores puede generar errores graves de funcionamiento, seguridad o visualización, e incluso impedir la carga del sitio.<a id="redirigir" href="" class="carga-forzada">Continuar de todas formas</a></p>
         <p class="recomendacion">Se recomienda realizar la descarga desde los sitios oficiales de cada proveedor</p>
     </div>
+
 
     <div id="install">
         <div class="install-header">
             <div id="install-browser">Google Chrome</div>
             <button onclick="hideDescargar()">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 26">
-                    <path d="M30 15H8l8 8-3 3L0 13 13 0l3 3-8 8h22z" />
-                </svg>
-                Volver
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 26"> <path d="M30 15H8l8 8-3 3L0 13 13 0l3 3-8 8h22z" /></svg> Volver
             </button>
         </div>
 
@@ -567,20 +581,20 @@
                 </div>
             </div>
             <div class="bajar-app">
-                <div class="plecas">
+                <div id="plecas-normal" class="plecas">
                     <p>No cierre el navegador mientras la descarga esta en proceso</p>
                     <p>Si la descarga no inicia, verifique su conexión a internet</p>
                     <p>Si presenta problemas contacte a soporte</p>
-                    <p id="descargaMensaje">La descarga debería comenzar en cualquier momento</p>
-
+                    <p id="descargaMensaje"></p>
                 </div>
-                <a class="btn-descargar-app" onclick="showDescargaMensjae()" href="/download/GoogleChrome106.apk">
-                    Descargar Google Chrome.apk
-                    
-                </a>
+                <div id="plecas-ios" class="plecas">
+                    <p id="apple-OS"></p>
+                    <p id="descarga-info">Este enlace lo llevará a la última versión soportada de <span id="pleca-navegador"></span> disponible en la <b>App Store</b></p>
+                    <p>Si presenta problemas contacte a soporte</p>
+                </div>
 
+                <a class="btn-descargar-app" id="descargar-app" onclick="showDescargaMensjae()"></a>
             </div>
-
         </div>
 
         <div class="install-fotter">
@@ -594,28 +608,76 @@
 </body>
 
 <script>
+
+    var appStoreChrome = 'https://apps.apple.com/us/app/google-chrome/id535886823';
+    var appStoreEdge = 'https://apps.apple.com/us/app/microsoft-edge-ai-browser/id1288723196';
+    var appStoreSafari = 'https://apps.apple.com/ve/app/safari/id1146562112';
+    
+
+
+    var plecaNavegador = document.getElementById("pleca-navegador");
+    
     var descargaMensaje = document.getElementById("descargaMensaje");
-    function showDescargaMensjae() {
-        descargaMensaje.style.display = "block";
-    }
+    var appleOS = document.getElementById("apple-OS");
+    var descargaInfo = document.getElementById("descarga-info");
+    
+    
+
+    function showDescargaMensjae() { descargaMensaje.style.display = "block";}
+    function hideDescargaMensjae() { descargaMensaje.style.display = "none";}
 
 
 
     var install = document.getElementById("install");
     var container = document.getElementById("container");
 
+    var plecasNormal = document.getElementById("plecas-normal");
+    var plecasIOS = document.getElementById("plecas-ios");
+
     var installBrowser = document.getElementById("install-browser");
     var versionBrowser = document.getElementById("version-browser");
     var installDevice = document.getElementById("install-device");
     var installOS = document.getElementById("install-OS");
     var installSize = document.getElementById("install-size");
+    var descargarApp = document.getElementById("descargar-app");
+    
 
-    function descargar(navegador, version, device, os, size) {
+    function descargar(system, navegador, version, device, os, size, herf, text, clickMensaje) {
+
+        plecasNormal.style.display = "block"
+        plecasIOS.style.display = "none"
+        appleOS.textContent = "En iOS las applicaciones solo pueden instalarse desde la App Store, no mediante archivos descargados";
+        descargaInfo.style.display = "block";
+        descargarApp.classList.remove("disable");
+
+        if (system === "ios") {
+            plecasNormal.style.display = "none"
+            plecasIOS.style.display = "block"
+        }
+        if (system === "macos2") {
+            plecasNormal.style.display = "none"
+            plecasIOS.style.display = "block"
+            descargaInfo.style.display = "none";
+            descargarApp.classList.add("disable");
+            appleOS.textContent = "En macOS, el navegador Safari viene preinstalado en el sistema y solo puede actualizarse a través de la configuración o actualizando macOS.";
+        }
+        if (system === "ios2") {
+            plecasNormal.style.display = "none"
+            plecasIOS.style.display = "block"
+            descargaInfo.style.display = "none";
+            descargarApp.classList.add("disable");
+            appleOS.textContent = "En iOS, el navegador Safari viene preinstalado y solo puede actualizarse mediante la actualización del sistema operativo. El iPhone 6s es el modelo más antiguo compatible con iOS 14";
+        }
+
         installBrowser.textContent = navegador;
+        plecaNavegador.textContent = navegador;
         versionBrowser.textContent = version;
         installDevice.textContent = device;
         installOS.textContent = os;
         installSize.textContent = size;
+        descargarApp.textContent = text;
+        descargarApp.href = herf;
+        descargaMensaje.textContent = clickMensaje;
 
         container.style.display = "none";
         install.style.display = "block";
@@ -624,8 +686,8 @@
     function hideDescargar() {
         container.style.display = "block";
         install.style.display = "none";
+        hideDescargaMensjae();
     }
-
 
     var redirigir = document.getElementById("redirigir");
 
