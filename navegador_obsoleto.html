@@ -196,6 +196,9 @@
             position: absolute;
             margin: 2px 0px;
         }
+        .plecas #descargaMensaje::before {
+            background-color: #cad;
+        }
 
 
 
@@ -368,10 +371,8 @@
 
         #descargaMensaje {
             display: none;
-            color: #999;
+            color: #aaa;
             font-size: 0.9rem;
-            text-align: center;
-            width: 100%;
         }
 
         .btn-obtener:hover { background-color: #165ab4; }
@@ -570,11 +571,12 @@
                     <p>No cierre el navegador mientras la descarga esta en proceso</p>
                     <p>Si la descarga no inicia, verifique su conexión a internet</p>
                     <p>Si presenta problemas contacte a soporte</p>
+                    <p id="descargaMensaje">La descarga debería comenzar en cualquier momento</p>
 
                 </div>
                 <a class="btn-descargar-app" onclick="showDescargaMensjae()" href="/download/GoogleChrome106.apk">
                     Descargar Google Chrome.apk
-                    <div id="descargaMensaje">La descarga debería comenzar en cualquier momento</div>
+                    
                 </a>
 
             </div>
