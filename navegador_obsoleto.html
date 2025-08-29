@@ -14,21 +14,30 @@
         }
     
         body {
-            font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 1rem;
-            background-color: #f2f2f2;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 1rem;
+        background-color: #f2f2f2;
         }
-    
+
         .recomendacion {
             font-style: normal;
             color: #999;
@@ -54,21 +63,31 @@
         }
     
         .install-header {
-    
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
-            padding: 1.25rem;
-            background-color: #333;
-            color: white;
-            font-size: 1.25rem;
-            border-radius: 1rem 1rem 0rem 0rem;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -moz-box-orient: horizontal;
+        -moz-box-direction: normal;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 1.25rem;
+        background-color: #333;
+        color: white;
+        font-size: 1.25rem;
+        border-radius: 1rem 1rem 0 0;
         }
+
     
         #install-browser {
             margin-right: 1.5rem;
@@ -77,25 +96,29 @@
         }
     
         .install-header button {
-            color: #ddd;
-            font-weight: bold;
-            border-radius: 1rem;
-            padding: 0.5rem 0.8rem;
-    
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.8rem;
-            letter-spacing: 0.025rem;
-            margin-left: auto;
-            border: none;
-            background-color: #555;
-            cursor: pointer;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        font-size: 0.8rem;
+        letter-spacing: 0.025rem;
+        margin-left: auto;
+        border-radius: 1rem;
+        border: none;
+        background-color: #555;
+        cursor: pointer;
+        padding: 0.5rem 0.8rem;
+        color: #ddd;
+        font-weight: bold;
         }
+
     
         .install-header svg {
             fill: #ddd;
@@ -113,45 +136,56 @@
         }
     
         .install-main {
-    
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            flex-direction: row;
-    
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -moz-box-orient: horizontal;
+        -moz-box-direction: normal;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
         }
+
     
         .bajar-app {
-    
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            flex-direction: column;
-            min-width: 280px;
-            width: 100%;
-            border-left: 1px solid #e5e5e5;
-            padding-bottom: 15px;
-            padding-top: 15px;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        min-width: 280px;
+        width: 100%;
+        border-left: 1px solid #e5e5e5;
+        padding-bottom: 15px;
+        padding-top: 15px;
         }
+
     
         .info-app-box {
-    
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-flex-wrap: wrap;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            padding: 7.5px;
-            padding-top: 0px;
-            margin-top: 7.5px;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        padding: 7.5px;
+        padding-top: 0;
+        margin-top: 7.5px;
         }
+
     
         .install-infoBox div {
             font-size: 0.9rem;
@@ -167,18 +201,32 @@
         }
     
         .install-infoBox {
-            margin: 7.5px;
-            -webkit-flex: 1 1;
-            flex: 1 1;
-            border-radius: 5px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: #f2f2f2;
-            padding: 7.5px 10px;
-            text-align: left;
-            white-space: nowrap;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        margin: 7.5px;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 7.5px 10px;
+        text-align: left;
+        white-space: nowrap;
         }
+
     
         .btn-descargar-app {
             text-align: center;
@@ -262,45 +310,47 @@
         }
     
         .browsers-container {
-    
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-flex-wrap: wrap;
-            /* Chrome/Safari antiguos */
-            -ms-flex-wrap: wrap;
-            /* IE10 */
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: -8px;
-            margin-top: 5px;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin: -8px;
+        margin-top: 5px;
         }
-    
+
         .browser-card {
-            height: 100%;
-            margin: 8px;
-            -webkit-flex: 1 1 300px;
-            flex: 1 1 300px;
-            max-width: calc(50% - 15px);
-            background: white;
-            border-radius: 12px;
-            padding: 1rem;
-            border: 1px solid #dadce0;
-            text-align: left;
+        -webkit-flex: 1 1 300px;
+        -ms-flex: 1 1 300px;
+        flex: 1 1 300px;
+        max-width: calc(50% - 15px);
+        background: white;
+        border-radius: 12px;
+        padding: 1rem;
+        border: 1px solid #dadce0;
+        text-align: left;
+        height: 100%;
+        margin: 8px;
         }
+
     
         .browser-header {
-    
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            align-items: center;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
         }
-    
+
         .browser-icon {
             margin-right: 0.75rem;
             width: 35px;
@@ -341,23 +391,25 @@
         }
     
         .option {
-    
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            align-items: center;
-            padding: 0.5rem 0.75rem;
-            border-radius: 8px;
-            margin-top: 0.75rem;
-            background-color: #f2f2f2;
-            border: 1px solid transparent;
-            transition: all 0.2s;
-            cursor: pointer;
-            width: 100%;
-            text-align: left;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        margin-top: 0.75rem;
+        background-color: #f2f2f2;
+        border: 1px solid transparent;
+        transition: all 0.2s;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
         }
+
     
         .option:hover {
             background-color: #e8f0fe;
@@ -473,15 +525,21 @@
             }
     
             .install-main {
-    
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -webkit-flex;
-                display: flex;
-                flex-direction: column;
-                margin-top: 15px;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -moz-box-orient: vertical;
+            -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            margin-top: 15px;
             }
+
     
             #install {
                 margin: 0.5rem;
