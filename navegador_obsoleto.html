@@ -12,9 +12,12 @@
             margin: 0;
             padding: 0;
         }
-
+    
         body {
             font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
             display: -webkit-flex;
             display: flex;
             flex-direction: column;
@@ -25,19 +28,19 @@
             padding: 1rem;
             background-color: #f2f2f2;
         }
-
+    
         .recomendacion {
             font-style: normal;
             color: #999;
             font-size: 0.85rem;
             padding: 0.5rem;
         }
-
+    
         #container {
             max-width: 660px;
             width: 100%;
         }
-
+    
         #install {
             display: none;
             margin: 2rem;
@@ -49,8 +52,12 @@
             border: 1px solid #ddd;
             overflow: hidden;
         }
-
+    
         .install-header {
+    
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
             display: -webkit-flex;
             display: flex;
             justify-content: center;
@@ -62,18 +69,22 @@
             font-size: 1.25rem;
             border-radius: 1rem 1rem 0rem 0rem;
         }
-
+    
         #install-browser {
             margin-right: 1.5rem;
             font-weight: bold;
             letter-spacing: 0.05rem;
         }
-
+    
         .install-header button {
             color: #ddd;
             font-weight: bold;
             border-radius: 1rem;
             padding: 0.5rem 0.8rem;
+    
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
             display: -webkit-flex;
             display: flex;
             justify-content: center;
@@ -85,30 +96,38 @@
             background-color: #555;
             cursor: pointer;
         }
-
+    
         .install-header svg {
             fill: #ddd;
             height: 0.7rem;
             margin-right: 0.45rem;
         }
-
+    
         .install-header button:hover {
             background-color: #777;
             color: white;
         }
-
+    
         .install-header button:hover svg {
             fill: white;
         }
-
+    
         .install-main {
+    
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
             display: -webkit-flex;
             display: flex;
             flex-direction: row;
-            
+    
         }
-
+    
         .bajar-app {
+    
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
             display: -webkit-flex;
             display: flex;
             flex-direction: column;
@@ -118,29 +137,35 @@
             padding-bottom: 15px;
             padding-top: 15px;
         }
-
+    
         .info-app-box {
+    
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
             display: -webkit-flex;
             display: flex;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
             flex-wrap: wrap;
             padding: 7.5px;
             padding-top: 0px;
             margin-top: 7.5px;
         }
-
+    
         .install-infoBox div {
             font-size: 0.9rem;
             font-weight: bold;
             color: #555;
         }
-
+    
         .install-infoBox .label {
             font-size: 12px;
             color: #999;
             font-weight: normal;
             margin-bottom: 2.5px;
         }
-
+    
         .install-infoBox {
             margin: 7.5px;
             -webkit-flex: 1 1;
@@ -154,7 +179,7 @@
             text-align: left;
             white-space: nowrap;
         }
-
+    
         .btn-descargar-app {
             text-align: center;
             margin: 15px 15px 0px;
@@ -166,33 +191,32 @@
             margin-top: auto;
             border: 1px solid #ccc;
         }
-
+    
         .btn-descargar-app:hover {
             background-color: #ddd;
             color: #111;
             border: 1px solid #aaa;
         }
-
+    
         .plecas {
             position: relative;
             margin: 0px 15px;
             margin-bottom: 15px;
         }
+    
         #plecas-ios {
-           display: none;
-        }
-        #plecas-normal {
-            
+            display: none;
         }
 
+    
         .plecas p {
             font-size: 0.9rem;
             margin-bottom: 10px;
             margin-left: 10px;
             position: relative;
-
+    
         }
-
+    
         .plecas p::before {
             content: "";
             width: 3px;
@@ -203,43 +227,57 @@
             position: absolute;
             margin: 2px 0px;
         }
+    
         .plecas #descargaMensaje::before {
             background-color: #cad;
         }
-
-
-
-
-
+    
+    
+    
+    
+    
         h1 {
             font-size: 1.75rem;
             color: #d93025;
+    
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
             display: -webkit-flex;
             display: flex;
             align-items: center;
             justify-content: center;
-
+    
         }
+    
         h4 {
             font-weight: normal;
             color: #555;
             font-size: 0.9rem;
         }
-
+    
         p {
             font-size: 0.9rem;
             color: #5f6368;
         }
-
+    
         .browsers-container {
+    
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
             display: -webkit-flex;
             display: flex;
+            -webkit-flex-wrap: wrap;
+            /* Chrome/Safari antiguos */
+            -ms-flex-wrap: wrap;
+            /* IE10 */
             flex-wrap: wrap;
             justify-content: center;
             margin: -8px;
             margin-top: 5px;
         }
-
+    
         .browser-card {
             height: 100%;
             margin: 8px;
@@ -252,13 +290,17 @@
             border: 1px solid #dadce0;
             text-align: left;
         }
-
+    
         .browser-header {
+    
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
             display: -webkit-flex;
             display: flex;
             align-items: center;
         }
-
+    
         .browser-icon {
             margin-right: 0.75rem;
             width: 35px;
@@ -266,30 +308,30 @@
             flex-shrink: 0;
             z-index: 1;
         }
-
+    
         .browser-icon2 {
             margin-right: 5px;
             width: 35px;
             height: 35px;
             flex-shrink: 0;
         }
-
-
+    
+    
         .browser-name {
             font-weight: 600;
             font-size: 1.1rem;
         }
-
+    
         .browser-version {
             color: #5f6368;
             font-size: 0.85rem;
             margin-top: 2.5px;
         }
-
+    
         .options-container {
             margin-top: 1rem;
         }
-
+    
         #install-size::after {
             content: "MB";
             color: #999;
@@ -297,7 +339,12 @@
             margin-left: 2px;
             font-size: 0.7rem;
         }
+    
         .option {
+    
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
             display: -webkit-flex;
             display: flex;
             align-items: center;
@@ -311,19 +358,19 @@
             width: 100%;
             text-align: left;
         }
-
+    
         .option:hover {
             background-color: #e8f0fe;
             border-color: #1a73e8;
         }
-
+    
         .iphone6s {
             background-color: #ddd;
             padding: 2px 5px;
             border-radius: 5px;
             color: #555;
         }
-
+    
         .option-icon {
             min-width: 1.5rem;
             min-height: 1.5rem;
@@ -331,19 +378,24 @@
             max-height: 1.7rem;
             margin-right: 0.75rem;
             flex-shrink: 0;
+            fill: #555;
         }
-
+    
+        .option:hover .option-icon {
+            fill: #000;
+        }
+    
         .option-text {
             font-size: 0.9rem;
             flex-grow: 1;
         }
-
+    
         .download-icon {
             width: 16px;
             height: 16px;
         }
-
-
+    
+    
         .unsupported-note {
             width: fit-content;
             margin-top: 1rem;
@@ -353,33 +405,34 @@
             border-radius: 10px;
             text-align: left;
         }
-
+    
         .option1 {
             font-weight: bold;
             font-size: 0.9rem;
         }
-        
+    
         button:disabled {
-        background-color: gray;
-        cursor: not-allowed;
+            background-color: gray;
+            cursor: not-allowed;
         }
-        
+    
         .option2 {
             color: #777;
             font-weight: normal;
             font-size: 0.8rem;
         }
-
+    
         .detalles {
             margin-top: 15px;
             display: none;
         }
-        
+    
         .disable {
             opacity: 0.5;
             pointer-events: none;
             cursor: not-allowed;
         }
+    
         .btn-obtener {
             margin-left: auto;
             padding: 5px 10px;
@@ -391,34 +444,49 @@
             letter-spacing: 0.015rem;
             cursor: pointer;
         }
-
+    
         #descargaMensaje {
             display: none;
             color: #aaa;
             font-size: 0.9rem;
         }
-
-        .btn-obtener:hover { background-color: #165ab4; }
-
-
+    
+        .btn-obtener:hover {
+            background-color: #165ab4;
+        }
+    
+    
         @media (max-width: 660px) {
-            h1 { 
+            h1 {
                 font-size: 1.5rem;
             }
+    
             .browser-card {
                 flex: 1 1 100%;
                 max-width: 100%;
             }
         }
+    
         @media (max-width: 550px) {
-            body { display: block; }
+            body {
+                display: block;
+            }
+    
             .install-main {
+    
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
                 display: -webkit-flex;
                 display: flex;
                 flex-direction: column;
                 margin-top: 15px;
             }
-            #install { margin: 0.5rem; }
+    
+            #install {
+                margin: 0.5rem;
+            }
+    
             .bajar-app {
                 border-left: none;
                 padding-top: 10px;
