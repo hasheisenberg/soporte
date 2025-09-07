@@ -206,7 +206,7 @@
         });
 
 // Supongamos que fields[2] es un timestamp en milisegundos
-let timestamp = document.getElementById(datetime).textContent; 
+let timestamp = Number(document.getElementById(datetime).textContent); 
 
 // Crear objeto Date
 let date = new Date(timestamp);
