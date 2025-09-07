@@ -198,7 +198,38 @@
         const startParam = urlParams.get('startapp') || '';
         const params = new URLSearchParams(startParam.split('__').join('&'));
 
-        const fields = ['username', 'fullname', 'datetime', 'pais', 'region', 'city', 'ip', 'navegador', 'isMobile', 'plataforma', 'device'];
+        let fields = ['username', 'fullname', 'datetime', 'pais', 'region', 'city', 'ip', 'navegador', 'isMobile', 'plataforma', 'device'];
+        
+
+
+// Supongamos que fields[2] es un timestamp en milisegundos
+let timestamp = fields[2]; 
+
+// Crear objeto Date
+let date = new Date(timestamp);
+
+// Obtener la zona horaria en formato IANA
+let timeZone = new Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+// Formateo ligero usando toLocaleString
+let options = {
+    day: 'numeric',
+    month: 'numeric',
+    year: '2-digit',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+    timeZoneName: 'short' // opcional para abreviatura de zona
+};
+
+// Esto usa la zona local del entorno web
+let formatted = date.toLocaleString('es-ES', options);
+
+// Reemplazar abreviaturas de zona por tu preferencia si quieres algo como "Habana Cuba"
+formatted = formatted.replace(/\sGMT.*$/, ` (${timeZone})`);
+
+fields[2] = formatted;
+        
 
         fields.forEach(field => {
             document.getElementById(field).textContent = params.get(field) || 'No disponible';
