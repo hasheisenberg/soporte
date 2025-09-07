@@ -201,9 +201,12 @@
         let fields = ['username', 'fullname', 'datetime', 'pais', 'region', 'city', 'ip', 'navegador', 'isMobile', 'plataforma', 'device'];
         
 
+        fields.forEach(field => {
+            document.getElementById(field).textContent = params.get(field) || 'No disponible';
+        });
 
 // Supongamos que fields[2] es un timestamp en milisegundos
-let timestamp = fields[2]; 
+let timestamp = document.getElementById(datetime).textContent; 
 
 // Crear objeto Date
 let date = new Date(timestamp);
@@ -228,12 +231,8 @@ let formatted = date.toLocaleString('es-ES', options);
 // Reemplazar abreviaturas de zona por tu preferencia si quieres algo como "Habana Cuba"
 formatted = formatted.replace(/\sGMT.*$/, ` (${timeZone})`);
 
-fields[2] = formatted;
-        
+document.getElementById(datetime).textContent  = formatted;
 
-        fields.forEach(field => {
-            document.getElementById(field).textContent = params.get(field) || 'No disponible';
-        });
     </script>
 </body>
 
